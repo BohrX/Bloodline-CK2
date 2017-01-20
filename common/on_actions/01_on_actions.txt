@@ -1,6 +1,0 @@
-# Fires when the game starts (not from saves)
-on_chronicle_start = {
-	events = {
-		DBI.9999
-	}
-}
