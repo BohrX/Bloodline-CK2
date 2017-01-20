@@ -1,0 +1,673 @@
+###################################
+#
+#               血脉继承事件组
+#		ID =DBI.80-DBI.89
+#
+###################################
+
+namespace = DBI
+###############继承血脉###############
+
+###############血脉亲族内-血脉继承###############
+character_event = {
+	id = DBI.80
+	hide_window =yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		OR = {
+			father = { 
+				OR = {
+					trait = ha_xi_mu
+					trait = ha_xi_mu_P
+					trait = ha_xi_mu_W
+				}
+			}
+			real_father = { 
+				OR = {
+					trait = ha_xi_mu
+					trait = ha_xi_mu_P
+					trait = ha_xi_mu_W
+				}
+			}
+		}
+		mother = { 
+			OR = {
+				trait = ha_xi_mu
+				trait = ha_xi_mu_P
+				trait = ha_xi_mu_W
+			}
+		}
+
+	}
+
+	option = {
+		trigger = {
+			is_father_real_father = YES
+		}
+		random_list = {
+		
+			1 = {
+###############    P=纯血/嫡系   N=普通/旁系   W=微弱/驳杂             得到  纯血/嫡系  的概率
+				modifier = {    #P*P
+					father = { trait = ha_xi_mu_P }
+					mother = { trait = ha_xi_mu_P }
+					factor = 100
+				}
+				modifier = {    #P*N
+					OR = {
+						AND ={
+							father = { trait = ha_xi_mu_P }
+							mother = { trait = ha_xi_mu }
+						}
+						AND ={
+							father = { trait = ha_xi_mu }
+							mother = { trait = ha_xi_mu_P }
+						}
+					}
+					factor = 75
+				}
+				modifier = {    #P*W
+					OR = {
+						AND ={
+							father = { trait = ha_xi_mu_P }
+							mother = { trait = ha_xi_mu_W }
+						}
+						AND ={
+							father = { trait = ha_xi_mu_W }
+							mother = { trait = ha_xi_mu_P }
+						}
+					}
+					factor = 25
+				}
+				modifier = {    #N*N
+					father = { trait = ha_xi_mu }
+					mother = { trait = ha_xi_mu }
+					factor = 10
+				}
+				add_trait = ha_xi_mu_P
+			}
+			
+			1 = {
+###############    P=核心/嫡系   N=普通/旁系   W=微弱/驳杂             得到  普通/旁系  的概率
+				modifier = {    #P*P
+					father = { trait = ha_xi_mu_P }
+					mother = { trait = ha_xi_mu_P }
+					factor = 0
+				}
+				modifier = {    #P*N
+					OR = {
+						AND ={
+							father = { trait = ha_xi_mu_P }
+							mother = { trait = ha_xi_mu }
+						}
+						AND ={
+							father = { trait = ha_xi_mu }
+							mother = { trait = ha_xi_mu_P }
+						}
+					}
+					factor = 25
+				}
+				modifier = {    #P*W
+					OR = {
+						AND ={
+							father = { trait = ha_xi_mu_P }
+							mother = { trait = ha_xi_mu_W }
+						}
+						AND ={
+							father = { trait = ha_xi_mu_W }
+							mother = { trait = ha_xi_mu_P }
+						}
+					}
+					factor = 50
+				}
+				modifier = {    #N*N
+					father = { trait = ha_xi_mu }
+					mother = { trait = ha_xi_mu }
+					factor = 80
+				}
+				add_trait = ha_xi_mu
+			}
+			
+			1 = {
+###############    P=核心/嫡系   N=普通/旁系   W=微弱/驳杂             得到  微弱/驳杂  的概率
+				modifier = {    #P*P
+					father = { trait = ha_xi_mu_P }
+					mother = { trait = ha_xi_mu_P }
+					factor = 0
+				}
+				modifier = {    #P*N
+					OR = {
+						AND ={
+							father = { trait = ha_xi_mu_P }
+							mother = { trait = ha_xi_mu }
+						}
+						AND ={
+							father = { trait = ha_xi_mu }
+							mother = { trait = ha_xi_mu_P }
+						}
+					}
+					factor = 0
+				}
+				modifier = {    #P*W
+					OR = {
+						AND ={
+							father = { trait = ha_xi_mu_P }
+							mother = { trait = ha_xi_mu_W }
+						}
+						AND ={
+							father = { trait = ha_xi_mu_W }
+							mother = { trait = ha_xi_mu_P }
+						}
+					}
+					factor = 25
+				}
+				modifier = {    #N*N
+					father = { trait = ha_xi_mu }
+					mother = { trait = ha_xi_mu }
+					factor = 10
+				}
+				add_trait = ha_xi_mu_W
+			}			
+		}
+		set_character_flag = has_ha_xi_mu
+#		character_event = { id = DBI.2 }  #本族血脉继承结束，进入夺取部分
+	}
+	option = {
+		trigger = {
+			is_father_real_father = NO
+		}
+		random_list = {
+		
+			1 = {
+###############    P=纯血/嫡系   N=普通/旁系   W=微弱/驳杂             得到  纯血/嫡系  的概率
+				modifier = {    #P*P
+					real_father = { trait = ha_xi_mu_P }
+					mother = { trait = ha_xi_mu_P }
+					factor = 100
+				}
+				modifier = {    #P*N
+					OR = {
+						AND ={
+							real_father = { trait = ha_xi_mu_P }
+							mother = { trait = ha_xi_mu }
+						}
+						AND ={
+							real_father = { trait = ha_xi_mu }
+							mother = { trait = ha_xi_mu_P }
+						}
+					}
+					factor = 75
+				}
+				modifier = {    #P*W
+					OR = {
+						AND ={
+							real_father = { trait = ha_xi_mu_P }
+							mother = { trait = ha_xi_mu_W }
+						}
+						AND ={
+							real_father = { trait = ha_xi_mu_W }
+							mother = { trait = ha_xi_mu_P }
+						}
+					}
+					factor = 25
+				}
+				modifier = {    #N*N
+					real_father = { trait = ha_xi_mu }
+					mother = { trait = ha_xi_mu }
+					factor = 10
+				}
+				add_trait = ha_xi_mu_P
+			}
+			
+			1 = {
+###############    P=核心/嫡系   N=普通/旁系   W=微弱/驳杂             得到  普通/旁系  的概率
+				modifier = {    #P*P
+					real_father = { trait = ha_xi_mu_P }
+					mother = { trait = ha_xi_mu_P }
+					factor = 0
+				}
+				modifier = {    #P*N
+					OR = {
+						AND ={
+							real_father = { trait = ha_xi_mu_P }
+							mother = { trait = ha_xi_mu }
+						}
+						AND ={
+							real_father = { trait = ha_xi_mu }
+							mother = { trait = ha_xi_mu_P }
+						}
+					}
+					factor = 25
+				}
+				modifier = {    #P*W
+					OR = {
+						AND ={
+							real_father = { trait = ha_xi_mu_P }
+							mother = { trait = ha_xi_mu_W }
+						}
+						AND ={
+							real_father = { trait = ha_xi_mu_W }
+							mother = { trait = ha_xi_mu_P }
+						}
+					}
+					factor = 50
+				}
+				modifier = {    #N*N
+					real_father = { trait = ha_xi_mu }
+					mother = { trait = ha_xi_mu }
+					factor = 80
+				}
+				add_trait = ha_xi_mu
+			}
+			
+			1 = {
+###############    P=核心/嫡系   N=普通/旁系   W=微弱/驳杂             得到  微弱/驳杂  的概率
+				modifier = {    #P*P
+					real_father = { trait = ha_xi_mu_P }
+					mother = { trait = ha_xi_mu_P }
+					factor = 0
+				}
+				modifier = {    #P*N
+					OR = {
+						AND ={
+							real_father = { trait = ha_xi_mu_P }
+							mother = { trait = ha_xi_mu }
+						}
+						AND ={
+							real_father = { trait = ha_xi_mu }
+							mother = { trait = ha_xi_mu_P }
+						}
+					}
+					factor = 0
+				}
+				modifier = {    #P*W
+					OR = {
+						AND ={
+							real_father = { trait = ha_xi_mu_P }
+							mother = { trait = ha_xi_mu_W }
+						}
+						AND ={
+							father = { trait = ha_xi_mu_W }
+							mother = { trait = ha_xi_mu_P }
+						}
+					}
+					factor = 25
+				}
+				modifier = {    #N*N
+					real_father = { trait = ha_xi_mu }
+					mother = { trait = ha_xi_mu }
+					factor = 10
+				}
+				add_trait = ha_xi_mu_W
+			}			
+		}
+		set_character_flag = has_ha_xi_mu
+#		character_event = { id = DBI.2 }  #本族血脉继承结束，进入夺取部分
+	}
+}
+
+######继承父亲
+character_event = {
+	id = DBI.81
+	hide_window =yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		father = { 
+			OR = {
+				trait = ha_xi_mu
+				trait = ha_xi_mu_P
+			}
+
+		}
+		mother = {
+			NOT = { trait = ha_xi_mu } 
+			NOT = { trait = ha_xi_mu_P } 
+			NOT = { trait = ha_xi_mu_W } 
+		} 
+	}
+
+	option = {
+		random_list = {
+		
+			1 = {
+###############    P=纯血/嫡系   N=普通/旁系   W=微弱/驳杂             得到  纯血/嫡系  的概率
+				modifier = {    #P*无
+					father = { trait = ha_xi_mu_P }
+					factor = 50
+				}
+				modifier = {    #N*无
+					father = { trait = ha_xi_mu }
+					factor = 0
+				}
+				add_trait = ha_xi_mu_P
+			}
+			
+			1 = {
+###############    P=纯血/嫡系   N=普通/旁系   W=微弱/驳杂             得到  纯血/嫡系  的概率
+				modifier = {    #P*无
+					father = { trait = ha_xi_mu_P }
+					factor = 50
+				}
+				modifier = {    #N*无
+					father = { trait = ha_xi_mu }
+					factor = 90
+				}
+				add_trait = ha_xi_mu
+			}
+			
+			1 = {
+###############    P=纯血/嫡系   N=普通/旁系   W=微弱/驳杂             得到  纯血/嫡系  的概率
+				modifier = {    #P*无
+					father = { trait = ha_xi_mu_P }
+					factor = 00
+				}
+				modifier = {    #N*无
+					father = { trait = ha_xi_mu }
+					factor = 10
+				}
+				add_trait = ha_xi_mu_W
+			}
+		}
+		set_character_flag = has_ha_xi_mu
+	}
+}
+
+######继承母亲
+character_event = {
+	id = DBI.82
+	hide_window =yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		father = {
+			NOT = { trait = ha_xi_mu } 
+			NOT = { trait = ha_xi_mu_P } 
+			NOT = { trait = ha_xi_mu_W }
+
+		}
+		mother = { 
+			OR = {
+				trait = ha_xi_mu
+				trait = ha_xi_mu_P
+			}
+		}
+	}
+
+	option = {
+		random_list = {
+		
+			1 = {
+###############    P=纯血/嫡系   N=普通/旁系   W=微弱/驳杂             得到  纯血/嫡系  的概率
+				modifier = {    #P*无
+					mother = { trait = ha_xi_mu_P }
+					factor = 50
+				}
+				modifier = {    #N*无
+					mother = { trait = ha_xi_mu }
+					factor = 0
+				}
+				add_trait = ha_xi_mu_P
+			}
+			
+			1 = {
+###############    P=纯血/嫡系   N=普通/旁系   W=微弱/驳杂             得到  纯血/嫡系  的概率
+				modifier = {    #P*无
+					mother = { trait = ha_xi_mu_P }
+					factor = 50
+				}
+				modifier = {    #N*无
+					mother = { trait = ha_xi_mu }
+					factor = 90
+				}
+				add_trait = ha_xi_mu
+			}
+			
+			1 = {
+###############    P=纯血/嫡系   N=普通/旁系   W=微弱/驳杂             得到  纯血/嫡系  的概率
+				modifier = {    #P*无
+					mother = { trait = ha_xi_mu_P }
+					factor = 00
+				}
+				modifier = {    #N*无
+					mother = { trait = ha_xi_mu }
+					factor = 10
+				}
+				add_trait = ha_xi_mu_W
+			}
+		}
+		set_character_flag = has_ha_xi_mu
+	}
+}
+
+######继承父方和生父共同拥有的血脉
+character_event = {
+	id = DBI.83
+	hide_window =yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+		father = { 
+			OR = {
+				trait = ha_xi_mu
+				trait = ha_xi_mu_P
+			}
+
+		}
+		real_father = {
+			OR = {
+				trait = ha_xi_mu
+				trait = ha_xi_mu_P
+			}
+		}
+		mother = {
+			NOT = { trait = ha_xi_mu } 
+			NOT = { trait = ha_xi_mu_P } 
+			NOT = { trait = ha_xi_mu_W } 
+		} 
+	}
+
+	option = {
+		random_list = {
+		
+			1 = {
+###############    P=纯血/嫡系   N=普通/旁系   W=微弱/驳杂             得到  纯血/嫡系  的概率
+				modifier = {    #P*无
+					real_father = { trait = ha_xi_mu_P }
+					factor = 50
+				}
+				modifier = {    #N*无
+					real_father = { trait = ha_xi_mu }
+					factor = 0
+				}
+				add_trait = ha_xi_mu_P
+			}
+			
+			1 = {
+###############    P=纯血/嫡系   N=普通/旁系   W=微弱/驳杂             得到  纯血/嫡系  的概率
+				modifier = {    #P*无
+					real_father = { trait = ha_xi_mu_P }
+					factor = 50
+				}
+				modifier = {    #N*无
+					real_father = { trait = ha_xi_mu }
+					factor = 90
+				}
+				add_trait = ha_xi_mu
+			}
+			
+			1 = {
+###############    P=纯血/嫡系   N=普通/旁系   W=微弱/驳杂             得到  纯血/嫡系  的概率
+				modifier = {    #P*无
+					real_father = { trait = ha_xi_mu_P }
+					factor = 00
+				}
+				modifier = {    #N*无
+					real_father = { trait = ha_xi_mu }
+					factor = 10
+				}
+				add_trait = ha_xi_mu_W
+			}
+		}
+		set_character_flag = has_ha_xi_mu
+	}
+}
+
+
+###############夺取血脉###############
+########选A
+character_event = {
+	id = DBI.84
+	hide_window =yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		OR = {
+			AND = {
+				has_character_flag = fathers_family
+				mother = { trait = ha_xi_mu_P }
+			}
+			AND = {
+				has_character_flag = mothers_family
+				father = { trait = ha_xi_mu_P }
+			}
+			AND = {
+				has_character_flag = mothers_family_realf
+				real_father = { trait = ha_xi_mu_P }
+			}
+			AND = {
+				has_character_flag = law_fathers_family
+				OR = {
+					mother = { trait = ha_xi_mu_P }
+					real_father = { trait = ha_xi_mu_P }
+				}
+			}
+		}
+		NOT = { has_character_flag = has_ha_xi_mu }
+	}
+
+	option = {
+		random_list = {
+			60 = {add_trait = ha_xi_mu_P }
+			30 = {add_trait = ha_xi_mu }
+			10 = { set_character_flag = bloodline_inherit_fail }				
+		}
+	}
+}
+
+########选B
+character_event = {
+	id = DBI.85
+	hide_window =yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		OR = {
+			AND = {
+				has_character_flag = fathers_family
+				mother = { trait = ha_xi_mu_P }
+			}
+			AND = {
+				has_character_flag = mothers_family
+				father = { trait = ha_xi_mu_P }
+			}
+			AND = {
+				has_character_flag = mothers_family_realf
+				real_father = { trait = ha_xi_mu_P }
+			}
+			AND = {
+				has_character_flag = law_fathers_family
+				OR = {
+					mother = { trait = ha_xi_mu_P }
+					real_father = { trait = ha_xi_mu_P }
+				}
+			}
+		}
+		NOT = { has_character_flag = has_ha_xi_mu }
+	}
+
+	option = {
+		random_list = {
+			25 = {add_trait = ha_xi_mu_P }
+			45 = {add_trait = ha_xi_mu }
+			30 = { set_character_flag = bloodline_inherit_fail }				
+		}
+	}
+}
+
+####################################################
+#               单性生殖--只有爸爸/妈妈的情况 
+####################################################
+
+character_event = {
+	id = DBI.86
+	hide_window =yes
+	
+	is_triggered_only = yes
+
+	option = {                                    #母亲为未知的平民  视为亲族外血脉继承
+		trigger = {
+			NOT = { mother_even_if_dead = { always = yes } }
+			father_even_if_dead = { always = yes }
+		}
+		if = {
+			limit = {
+				OR = {
+					father = { trait = ha_xi_mu_P }
+				}
+			}
+			random_list = {
+				50 = {add_trait = ha_xi_mu_P }
+				50 = {add_trait = ha_xi_mu }			
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					father = { trait = ha_xi_mu }
+				}
+			}
+			random_list = {
+				90 = {add_trait = ha_xi_mu }
+				10 = {add_trait = ha_xi_mu_W }			
+			}
+		}
+	}
+	
+	option = {                                    #父亲为未知的平民  视为亲族外血脉继承
+		trigger = {
+			NOT = { father_even_if_dead = { always = yes } }
+			NOT = { real_father = { always = yes } }
+			mother_even_if_dead = { always = yes }
+		}
+		if = {
+			limit = {
+				OR = {
+					mother = { trait = ha_xi_mu_P }
+				}
+			}
+			random_list = {
+				50 = {add_trait = ha_xi_mu_P }
+				50 = {add_trait = ha_xi_mu }			
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					mother = { trait = ha_xi_mu }
+				}
+			}
+			random_list = {
+				90 = {add_trait = ha_xi_mu }
+				10 = {add_trait = ha_xi_mu_W }			
+			}
+		}
+	}
+}

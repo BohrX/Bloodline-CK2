@@ -1,0 +1,119 @@
+####BLOODLINE  TRAIT  TRIGGERS####
+#如果你做了改变，请在下表中修改条目描述
+
+#dynasty bloodline
+#is_Habsburg_trigger		拥有哈布斯堡血脉（纯正、普通或驳杂 下同）
+#is_Plantagenet_trigger		拥有金雀花血脉
+#is_Capet_trigger			拥有卡佩血脉
+#is_Komneni_trigger			拥有科穆宁血脉
+#is_Ryurik_trigger			拥有留里克血脉
+#is_Hohenstaufen_trigger		拥有霍亨斯陶芬血脉
+#is_Caroling_trigger			拥有加洛林血脉
+#is_Hashim_trigger			拥有哈希姆血脉
+#is_Abbas_trigger			拥有阿巴斯血脉
+#is_Fatimah_trigger			拥有法蒂玛血脉
+
+#is_Godborn_trigger			拥有神之血脉
+
+
+##DYNASTY BLOODLINE###
+
+##哈布斯堡
+is_Habsburg_trigger = {
+	OR = {
+		trait = ha_bu_si_bao_P
+		trait = ha_bu_si_bao
+		trait = ha_bu_si_bao_W
+	}
+}
+
+##金雀花
+is_Plantagenet_trigger = {
+	OR = {
+		trait = jin_que_hua_P
+		trait = jin_que_hua
+		trait = jin_que_hua_W
+	}
+}
+
+##卡佩
+is_Capet_trigger = {
+	OR = {
+		trait = ka_pei_P
+		trait = ka_pei
+		trait = ka_pei_W
+	}
+}
+
+##科穆宁
+is_Komnene_trigger = {
+	OR = {
+		trait = ke_mu_ning_P
+		trait = ke_mu_ning
+		trait = ke_mu_ning_W
+	}
+}
+
+##留里克
+is_Rurikid_trigger = {
+	OR = {
+		trait = liu_li_ke_P
+		trait = liu_li_ke
+		trait = liu_li_ke_W
+	}
+}
+
+##霍亨斯陶芬
+is_Hohenstaufen_trigger = {
+	OR = {
+		trait = huo_heng_si_tao_fen_P
+		trait = huo_heng_si_tao_fen
+		trait = huo_heng_si_tao_fen_W
+	}
+}
+
+##加洛林
+is_Karoling_trigger = {
+	OR = {
+		trait = jia_luo_lin_P
+		trait = jia_luo_lin
+		trait = jia_luo_lin_W
+	}
+}
+
+##哈希姆
+is_Hashimid_trigger = {
+	OR = {
+		trait = ha_xi_mu_P
+		trait = ha_xi_mu
+		trait = ha_xi_mu_W
+	}
+}
+
+##阿巴斯
+is_Abbasid_trigger = {
+	OR = {
+		trait = a_ba_si_P
+		trait = a_ba_si
+		trait = a_ba_si_W
+	}
+}
+
+##法蒂玛
+is_Fatimid_trigger = {
+	OR = {
+		trait = fa_di_ma_P
+		trait = fa_di_ma
+		trait = fa_di_ma_W
+	}
+}
+
+#####################
+##神裔
+is_Godborn_trigger = {
+	OR = {
+		trait = god_man
+		trait = god_man_2
+		trait = god_man_3
+	}
+}

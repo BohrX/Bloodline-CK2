@@ -1,0 +1,2071 @@
+###################################
+#
+#          血脉继承事件组
+#		ID =DBI.1-DBI.9
+#
+###################################
+
+namespace = DBI
+
+#孩子分类
+character_event = {
+	id = DBI.1
+	hide_window =yes
+
+	trigger = {
+		is_adult = no
+		NOT = { trait = ha_bu_si_bao_P }
+		NOT = { trait = jin_que_hua_P }
+		NOT = { trait = ka_pei_P }
+		NOT = { trait = ke_mu_ning_P }
+		NOT = { trait = liu_li_ke_P }
+		NOT = { trait = huo_heng_si_tao_fen_P }
+		NOT = { trait = jia_luo_lin_P }
+		NOT = { trait = ha_xi_mu_P }
+		NOT = { trait = a_ba_si_P }
+		NOT = { trait = fa_di_ma_P }
+		NOT = { trait = ha_bu_si_bao }
+		NOT = { trait = jin_que_hua }
+		NOT = { trait = ka_pei }
+		NOT = { trait = ke_mu_ning }
+		NOT = { trait = liu_li_ke }
+		NOT = { trait = huo_heng_si_tao_fen }
+		NOT = { trait = jia_luo_lin }
+		NOT = { trait = ha_xi_mu }
+		NOT = { trait = a_ba_si }
+		NOT = { trait = fa_di_ma }
+		NOT = { trait = ha_bu_si_bao_W }
+		NOT = { trait = jin_que_hua_W }
+		NOT = { trait = ka_pei_W }
+		NOT = { trait = ke_mu_ning_W }
+		NOT = { trait = liu_li_ke_W }
+		NOT = { trait = huo_heng_si_tao_fen_W }
+		NOT = { trait = jia_luo_lin_W }
+		NOT = { trait = ha_xi_mu_W }
+		NOT = { trait = a_ba_si_W }
+		NOT = { trait = fa_di_ma_W }
+		NOT = { trait = god_man }
+		NOT = { trait = god_man_2 }
+		NOT = { trait = god_man_3 }
+		OR = {
+			father_even_if_dead = {
+				OR = {
+					trait=ha_bu_si_bao_P
+					trait=jin_que_hua_P
+					trait=ka_pei_P
+					trait=ke_mu_ning_P
+					trait=liu_li_ke_P
+					trait=huo_heng_si_tao_fen_P
+					trait=jia_luo_lin_P
+					trait=ha_xi_mu_P
+					trait=a_ba_si_P
+					trait=fa_di_ma_P
+					trait=ha_bu_si_bao
+					trait=jin_que_hua
+					trait=ka_pei
+					trait=ke_mu_ning
+					trait=liu_li_ke
+					trait=huo_heng_si_tao_fen
+					trait=jia_luo_lin
+					trait=ha_xi_mu
+					trait=a_ba_si
+					trait=fa_di_ma
+					trait=ha_bu_si_bao_W
+					trait=jin_que_hua_W
+					trait=ka_pei_W
+					trait=ke_mu_ning_W
+					trait=liu_li_ke_W
+					trait=huo_heng_si_tao_fen_W
+					trait=jia_luo_lin_W
+					trait=ha_xi_mu_W
+					trait=a_ba_si_W
+					trait=fa_di_ma_W
+				}
+			}
+			real_father = {
+				OR = {
+					trait=ha_bu_si_bao_P
+					trait=jin_que_hua_P
+					trait=ka_pei_P
+					trait=ke_mu_ning_P
+					trait=liu_li_ke_P
+					trait=huo_heng_si_tao_fen_P
+					trait=jia_luo_lin_P
+					trait=ha_xi_mu_P
+					trait=a_ba_si_P
+					trait=fa_di_ma_P
+					trait=ha_bu_si_bao
+					trait=jin_que_hua
+					trait=ka_pei
+					trait=ke_mu_ning
+					trait=liu_li_ke
+					trait=huo_heng_si_tao_fen
+					trait=jia_luo_lin
+					trait=ha_xi_mu
+					trait=a_ba_si
+					trait=fa_di_ma
+					trait=ha_bu_si_bao_W
+					trait=jin_que_hua_W
+					trait=ka_pei_W
+					trait=ke_mu_ning_W
+					trait=liu_li_ke_W
+					trait=huo_heng_si_tao_fen_W
+					trait=jia_luo_lin_W
+					trait=ha_xi_mu_W
+					trait=a_ba_si_W
+					trait=fa_di_ma_W
+				}
+			}
+			mother_even_if_dead = {
+				OR = {
+					trait=ha_bu_si_bao_P
+					trait=jin_que_hua_P
+					trait=ka_pei_P
+					trait=ke_mu_ning_P
+					trait=liu_li_ke_P
+					trait=huo_heng_si_tao_fen_P
+					trait=jia_luo_lin_P
+					trait=ha_xi_mu_P
+					trait=a_ba_si_P
+					trait=fa_di_ma_P
+					trait=ha_bu_si_bao
+					trait=jin_que_hua
+					trait=ka_pei
+					trait=ke_mu_ning
+					trait=liu_li_ke
+					trait=huo_heng_si_tao_fen
+					trait=jia_luo_lin
+					trait=ha_xi_mu
+					trait=a_ba_si
+					trait=fa_di_ma
+					trait=ha_bu_si_bao_W
+					trait=jin_que_hua_W
+					trait=ka_pei_W
+					trait=ke_mu_ning_W
+					trait=liu_li_ke_W
+					trait=huo_heng_si_tao_fen_W
+					trait=jia_luo_lin_W
+					trait=ha_xi_mu_W
+					trait=a_ba_si_W
+					trait=fa_di_ma_W
+				}
+			}
+		}
+#############################################################################################
+		OR  = {
+			AND = { #无母孩子
+				father_even_if_dead = {	
+					NOT={trait=god_man}   # 不是神裔，神裔继承另算
+					NOT={trait=god_man_2}
+					NOT={trait=god_man_3}
+				}
+				NOT = { mother_even_if_dead = { always = yes } }
+			}
+			AND = { #无父孩子
+				mother_even_if_dead ={
+					NOT={trait=god_man}   # 不是神裔，神裔继承另算
+					NOT={trait=god_man_2}
+					NOT={trait=god_man_3}
+				}
+				NOT = { father_even_if_dead = { always = yes } }
+			}
+			AND = { #具有双亲的孩子
+				father_even_if_dead = {	
+					NOT={trait=god_man}   # 不是神裔，神裔继承另算
+					NOT={trait=god_man_2}
+					NOT={trait=god_man_3}
+				}
+				mother_even_if_dead ={
+					NOT={trait=god_man}   # 不是神裔，神裔继承另算
+					NOT={trait=god_man_2}
+					NOT={trait=god_man_3}
+				}
+			}
+		}
+		#这个块写神血时要大改  至少father要换成real_father
+#############################################################################################
+		NOT = { has_character_flag = no_bloodline }
+	}
+	
+	option = {
+		AI_chance = { factor = 100 }
+		trigger = {
+			OR = {
+				AND ={
+					NOT = { father_even_if_dead = { always = yes } }
+					NOT = { real_father = { always = yes } }
+					mother_even_if_dead = { always = yes }
+				}
+				AND ={
+					NOT = { mother_even_if_dead = { always = yes } }
+					father_even_if_dead = { always = yes }
+				}
+			}
+		}
+		set_character_flag = child_with_unkown
+		character_event = { id = DBI.3 }
+	}
+	
+	option = {#父（或生父）母都是贵族 的孩子
+		character_event = { id = DBI.2 }
+	}
+}
+
+#孩子继承血脉的断定
+character_event = {
+	id = DBI.2
+	hide_window =yes
+	
+	is_triggered_only = yes
+
+	option = {
+		trigger = {
+			OR = {
+				AND = {   #不是私生子 正常婚姻 
+					was_conceived_a_bastard = NO
+					father = { is_married_matrilineally = NO }
+				}
+				AND = {   #是私生子 父亲是生父 （合法私生子 或 有领地 或 在父亲宫廷）
+					was_conceived_a_bastard = YES
+					is_father_real_father =YES
+					OR = {
+						trait = legit_bastard
+						is_ruler = YES
+						employer = {
+							is_father = ROOT
+						}
+					}
+				}
+			}
+		}
+		set_character_flag = fathers_family
+		character_event = { id = DBI.3 }
+	}
+
+	option = {
+		trigger = {
+			OR = {
+				AND = {   #不是私生子 入赘婚姻
+					was_conceived_a_bastard = NO
+					father = { is_married_matrilineally = YES }
+				}
+				AND = {   #是私生子 父亲是生父  不是（合法私生子 或 有领地 或 在父亲宫廷）
+					was_conceived_a_bastard = YES
+					is_father_real_father =YES
+					is_ruler = NO
+					NOT = { trait = legit_bastard }
+					employer = {
+						NOT = { is_father = ROOT }
+					}
+				}
+			}
+		}
+		set_character_flag = mothers_family
+		character_event = { id = DBI.3 }
+	}
+
+	option = {
+		trigger = {
+			OR = {
+				AND = {   #是私生子 父亲不是生父  存在已知父亲  （法理上的）父亲是入赘婚姻
+					was_conceived_a_bastard = YES
+					is_father_real_father = NO
+					father_even_if_dead = { always = yes }
+					father = { is_married_matrilineally = YES }
+				}
+				AND = {   #是私生子 父亲不是生父  不存在已知父亲
+					was_conceived_a_bastard = YES
+					is_father_real_father = NO
+					NOT = { father_even_if_dead = { always = yes } }
+				}
+			}
+		}
+		set_character_flag = mothers_family_realf
+		character_event = { id = DBI.3 }
+	}
+
+	option = {
+	#是私生子 父亲不是生父  存在父亲 （法理上的）父亲是正常婚姻
+		trigger = {
+			was_conceived_a_bastard = YES
+			is_father_real_father = NO
+			father_even_if_dead = { always = yes }
+			father = { is_married_matrilineally = NO }
+		}
+		set_character_flag = law_fathers_family
+		character_event = { id = DBI.3 }
+	}
+
+	option = {
+		trigger = {
+			has_character_flag = child_with_unkown
+		}
+		character_event = { id = DBI.3 }
+	}
+}
+#家族血脉继承
+character_event = {
+	id = DBI.3
+	picture = GFX_evt_bandits
+	desc = "EVTDESC_DBI_3"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTA_DBI_3"
+		
+		trigger = {
+			has_character_flag = fathers_family
+		}
+		
+		hidden_tooltip = {
+			#继承父方血脉
+			character_event = { id = DBI.1001 }
+			#通知父母兄
+			character_event = { id = DBI.1011 }
+		}
+	}
+	option = {
+		name = "EVTOPTA_DBI_3"
+		
+		trigger = {
+			has_character_flag = mothers_family
+		}
+
+		hidden_tooltip = {
+			#继承母方血脉
+			character_event = { id = DBI.1002 }
+			#通知母父兄
+			character_event = { id = DBI.1012 }
+		}
+	}
+	option = {
+		name = "EVTOPTA_DBI_3"
+		
+		trigger = {
+			has_character_flag = mothers_family_realf
+		}
+		
+		hidden_tooltip = {
+			#继承母方血脉
+			character_event = { id = DBI.1002 }
+			#通知母
+			character_event = { id = DBI.1013 }
+		}
+	}
+	option = {   #是私生子 父亲不是生父  存在父亲 （法理上的）父亲是正常婚姻
+		name = "EVTOPTA_DBI_3"
+		
+		trigger = {
+			has_character_flag = law_fathers_family
+		}		
+		hidden_tooltip = {
+			#继承父方和生父共同拥有的血脉
+			character_event = { id = DBI.1003 }
+			#通知父母兄
+			character_event = { id = DBI.1011 }
+		}
+	}
+	option = {   #父母有一方未知（且没有真正父亲）的情况视为与平民生下的孩子
+		name = "EVTOPTA_DBI_3"
+		
+		trigger = {
+			has_character_flag = child_with_unkown
+		}
+		########################################
+		hidden_tooltip = {
+			#视为亲族外血脉继承
+			character_event = { id = DBI.1004 }
+			
+			father = {
+				character_event = { id = DBI.4 days = 2 }
+			}
+			mother = {
+				character_event = { id = DBI.4 days = 2 }
+			}
+		}
+	}
+}
+
+#############################################
+character_event = {
+	id = DBI.4
+	picture = GFX_evt_child_talking
+	  
+	desc = {
+		text = EVTDESC_DBI_4  #知道血脉继承现象的描述
+		trigger = {
+			OR ={
+				trait = ha_bu_si_bao_P
+				trait = jin_que_hua_P
+				trait = ka_pei_P
+				trait = ke_mu_ning_P
+				trait = liu_li_ke_P
+				trait = huo_heng_si_tao_fen_P
+				trait = jia_luo_lin_P
+				trait = ha_xi_mu_P
+				trait = a_ba_si_P
+				trait = fa_di_ma_P
+				trait = ha_bu_si_bao
+				trait = jin_que_hua
+				trait = ka_pei
+				trait = ke_mu_ning
+				trait = liu_li_ke
+				trait = huo_heng_si_tao_fen
+				trait = jia_luo_lin
+				trait = ha_xi_mu
+				trait = a_ba_si
+				trait = fa_di_ma
+				trait = ha_bu_si_bao_W
+				trait = jin_que_hua_W
+				trait = ka_pei_W
+				trait = ke_mu_ning_W
+				trait = liu_li_ke_W
+				trait = huo_heng_si_tao_fen_W
+				trait = jia_luo_lin_W
+				trait = ha_xi_mu_W
+				trait = a_ba_si_W
+				trait = fa_di_ma_W
+			}
+		}
+	}
+	desc = {                 
+		text = EVTDESC_DBI_4_UNKOWN  #不知道血脉继承现象的描述
+		trigger = {
+			NOT = { trait = ha_bu_si_bao_P }
+			NOT = { trait = jin_que_hua_P }
+			NOT = { trait = ka_pei_P }
+			NOT = { trait = ke_mu_ning_P }
+			NOT = { trait = liu_li_ke_P }
+			NOT = { trait = huo_heng_si_tao_fen_P }
+			NOT = { trait = jia_luo_lin_P }
+			NOT = { trait = ha_xi_mu_P }
+			NOT = { trait = a_ba_si_P }
+			NOT = { trait = fa_di_ma_P }
+			NOT = { trait = ha_bu_si_bao }
+			NOT = { trait = jin_que_hua }
+			NOT = { trait = ka_pei }
+			NOT = { trait = ke_mu_ning }
+			NOT = { trait = liu_li_ke }
+			NOT = { trait = huo_heng_si_tao_fen }
+			NOT = { trait = jia_luo_lin }
+			NOT = { trait = ha_xi_mu }
+			NOT = { trait = a_ba_si }
+			NOT = { trait = fa_di_ma }
+			NOT = { trait = ha_bu_si_bao_W }
+			NOT = { trait = jin_que_hua_W }
+			NOT = { trait = ka_pei_W }
+			NOT = { trait = ke_mu_ning_W }
+			NOT = { trait = liu_li_ke_W }
+			NOT = { trait = huo_heng_si_tao_fen_W }
+			NOT = { trait = jia_luo_lin_W }
+			NOT = { trait = ha_xi_mu_W }
+			NOT = { trait = a_ba_si_W }
+			NOT = { trait = fa_di_ma_W }
+			FROM = {
+				OR = {
+					father = {
+						NOT = { dynasty = PREV }
+						OR = {
+							trait = ha_bu_si_bao_P
+							trait = jin_que_hua_P
+							trait = ka_pei_P
+							trait = ke_mu_ning_P
+							trait = liu_li_ke_P
+							trait = huo_heng_si_tao_fen_P
+							trait = jia_luo_lin_P
+							trait = ha_xi_mu_P
+							trait = a_ba_si_P
+							trait = fa_di_ma_P
+						}
+					}
+					mother = {
+						NOT = { dynasty = PREV }
+						OR = {
+							trait = ha_bu_si_bao_P
+							trait = jin_que_hua_P
+							trait = ka_pei_P
+							trait = ke_mu_ning_P
+							trait = liu_li_ke_P
+							trait = huo_heng_si_tao_fen_P
+							trait = jia_luo_lin_P
+							trait = ha_xi_mu_P
+							trait = a_ba_si_P
+							trait = fa_di_ma_P
+						}
+					}
+				}
+			}
+		}
+	}	
+	desc = {                 
+		text = EVTDESC_DBI_4_NOINHERIT  #不传承血脉只发热的描述
+		trigger = {
+			NOT = { trait = ha_bu_si_bao_P }
+			NOT = { trait = jin_que_hua_P }
+			NOT = { trait = ka_pei_P }
+			NOT = { trait = ke_mu_ning_P }
+			NOT = { trait = liu_li_ke_P }
+			NOT = { trait = huo_heng_si_tao_fen_P }
+			NOT = { trait = jia_luo_lin_P }
+			NOT = { trait = ha_xi_mu_P }
+			NOT = { trait = a_ba_si_P }
+			NOT = { trait = fa_di_ma_P }
+			NOT = { trait = ha_bu_si_bao }
+			NOT = { trait = jin_que_hua }
+			NOT = { trait = ka_pei }
+			NOT = { trait = ke_mu_ning }
+			NOT = { trait = liu_li_ke }
+			NOT = { trait = huo_heng_si_tao_fen }
+			NOT = { trait = jia_luo_lin }
+			NOT = { trait = ha_xi_mu }
+			NOT = { trait = a_ba_si }
+			NOT = { trait = fa_di_ma }
+			NOT = { trait = ha_bu_si_bao_W }
+			NOT = { trait = jin_que_hua_W }
+			NOT = { trait = ka_pei_W }
+			NOT = { trait = ke_mu_ning_W }
+			NOT = { trait = liu_li_ke_W }
+			NOT = { trait = huo_heng_si_tao_fen_W }
+			NOT = { trait = jia_luo_lin_W }
+			NOT = { trait = ha_xi_mu_W }
+			NOT = { trait = a_ba_si_W }
+			NOT = { trait = fa_di_ma_W }
+			FROM = {
+				OR = {
+					father = {
+						NOT = { dynasty = PREV }
+						OR = {
+							trait = ha_bu_si_bao
+							trait = jin_que_hua
+							trait = ka_pei
+							trait = ke_mu_ning
+							trait = liu_li_ke
+							trait = huo_heng_si_tao_fen
+							trait = jia_luo_lin
+							trait = ha_xi_mu
+							trait = a_ba_si
+							trait = fa_di_ma
+							trait = ha_bu_si_bao_W
+							trait = jin_que_hua_W
+							trait = ka_pei_W
+							trait = ke_mu_ning_W
+							trait = liu_li_ke_W
+							trait = huo_heng_si_tao_fen_W
+							trait = jia_luo_lin_W
+							trait = ha_xi_mu_W
+							trait = a_ba_si_W
+							trait = fa_di_ma_W
+						}
+					}
+					mother = {
+						NOT = { dynasty = PREV }
+						OR = {
+							trait = ha_bu_si_bao
+							trait = jin_que_hua
+							trait = ka_pei
+							trait = ke_mu_ning
+							trait = liu_li_ke
+							trait = huo_heng_si_tao_fen
+							trait = jia_luo_lin
+							trait = ha_xi_mu
+							trait = a_ba_si
+							trait = fa_di_ma
+							trait = ha_bu_si_bao_W
+							trait = jin_que_hua_W
+							trait = ka_pei_W
+							trait = ke_mu_ning_W
+							trait = liu_li_ke_W
+							trait = huo_heng_si_tao_fen_W
+							trait = jia_luo_lin_W
+							trait = ha_xi_mu_W
+							trait = a_ba_si_W
+							trait = fa_di_ma_W
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	is_triggered_only = yes
+	
+	option = {   #没有血脉可以夺取
+		name = "EVTOPTA_DBI_4"  ##你正在继承家族血脉孩子！
+		trigger = {
+			FROM = {
+				OR = {
+					AND = {
+						has_character_flag = fathers_family
+						mother = {
+							NOT = { trait = ha_bu_si_bao_P }
+							NOT = { trait = jin_que_hua_P }
+							NOT = { trait = ka_pei_P }
+							NOT = { trait = ke_mu_ning_P }
+							NOT = { trait = liu_li_ke_P }
+							NOT = { trait = huo_heng_si_tao_fen_P }
+							NOT = { trait = jia_luo_lin_P }
+							NOT = { trait = ha_xi_mu_P }
+							NOT = { trait = a_ba_si_P }
+						}
+					}
+					AND = {
+						has_character_flag = mothers_family
+						father = {
+							NOT = { trait = ha_bu_si_bao_P }
+							NOT = { trait = jin_que_hua_P }
+							NOT = { trait = ka_pei_P }
+							NOT = { trait = ke_mu_ning_P }
+							NOT = { trait = liu_li_ke_P }
+							NOT = { trait = huo_heng_si_tao_fen_P }
+							NOT = { trait = jia_luo_lin_P }
+							NOT = { trait = ha_xi_mu_P }
+							NOT = { trait = a_ba_si_P }
+						}
+					}
+					AND = {
+						has_character_flag = mothers_family_realf
+						real_father = {
+							NOT = { trait = ha_bu_si_bao_P }
+							NOT = { trait = jin_que_hua_P }
+							NOT = { trait = ka_pei_P }
+							NOT = { trait = ke_mu_ning_P }
+							NOT = { trait = liu_li_ke_P }
+							NOT = { trait = huo_heng_si_tao_fen_P }
+							NOT = { trait = jia_luo_lin_P }
+							NOT = { trait = ha_xi_mu_P }
+							NOT = { trait = a_ba_si_P }
+						}
+					}
+					AND = {
+						has_character_flag = law_fathers_family
+						mother = {
+							NOT = { trait = ha_bu_si_bao_P }
+							NOT = { trait = jin_que_hua_P }
+							NOT = { trait = ka_pei_P }
+							NOT = { trait = ke_mu_ning_P }
+							NOT = { trait = liu_li_ke_P }
+							NOT = { trait = huo_heng_si_tao_fen_P }
+							NOT = { trait = jia_luo_lin_P }
+							NOT = { trait = ha_xi_mu_P }
+							NOT = { trait = a_ba_si_P }
+						}
+					}
+					has_character_flag = child_with_unkown
+				}
+			}
+		}
+		FROM = { character_event = { id = DBI.997 days = 1 } }
+	}
+	option = {  #可以夺取血脉
+		name = "EVTOPTA_DBI_4"  ##你正在继承家族血脉孩子！
+		trigger = {
+			FROM = {
+				OR = {
+					AND = {
+						has_character_flag = fathers_family
+						mother = {
+							OR = {
+								trait = ha_bu_si_bao_P
+								trait = jin_que_hua_P
+								trait = ka_pei_P
+								trait = ke_mu_ning_P
+								trait = liu_li_ke_P
+								trait = huo_heng_si_tao_fen_P
+								trait = jia_luo_lin_P
+								trait = ha_xi_mu_P
+								trait = a_ba_si_P
+							}
+						}
+					}
+					AND = {
+						has_character_flag = mothers_family
+						father = {
+							OR = {
+								trait = ha_bu_si_bao_P
+								trait = jin_que_hua_P
+								trait = ka_pei_P
+								trait = ke_mu_ning_P
+								trait = liu_li_ke_P
+								trait = huo_heng_si_tao_fen_P
+								trait = jia_luo_lin_P
+								trait = ha_xi_mu_P
+								trait = a_ba_si_P
+							}
+						}
+					}
+					AND = {
+						has_character_flag = mothers_family_realf
+						real_father = {
+							OR = {
+								trait = ha_bu_si_bao_P
+								trait = jin_que_hua_P
+								trait = ka_pei_P
+								trait = ke_mu_ning_P
+								trait = liu_li_ke_P
+								trait = huo_heng_si_tao_fen_P
+								trait = jia_luo_lin_P
+								trait = ha_xi_mu_P
+								trait = a_ba_si_P
+							}
+						}
+					}
+					AND = {
+						has_character_flag = law_fathers_family
+						mother = {
+							OR = {
+								trait = ha_bu_si_bao_P
+								trait = jin_que_hua_P
+								trait = ka_pei_P
+								trait = ke_mu_ning_P
+								trait = liu_li_ke_P
+								trait = huo_heng_si_tao_fen_P
+								trait = jia_luo_lin_P
+								trait = ha_xi_mu_P
+								trait = a_ba_si_P
+							}
+						}
+					}
+				}
+			}
+		}		
+		character_event = { id = DBI.5 days = 3 }
+	}
+}
+
+####################是否开启继承仪式？#########################
+character_event = {
+	id = DBI.5
+	picture = GFX_evt_monk
+	
+	desc = {
+		text = EVTDESC_DBI_5       #选择是否继承外来血脉
+		trigger = {
+			OR ={
+				trait = ha_bu_si_bao_P
+				trait = jin_que_hua_P
+				trait = ka_pei_P
+				trait = ke_mu_ning_P
+				trait = liu_li_ke_P
+				trait = huo_heng_si_tao_fen_P
+				trait = jia_luo_lin_P
+				trait = ha_xi_mu_P
+				trait = a_ba_si_P
+				trait = fa_di_ma_P
+				trait = ha_bu_si_bao
+				trait = jin_que_hua
+				trait = ka_pei
+				trait = ke_mu_ning
+				trait = liu_li_ke
+				trait = huo_heng_si_tao_fen
+				trait = jia_luo_lin
+				trait = ha_xi_mu
+				trait = a_ba_si
+				trait = fa_di_ma
+				trait = ha_bu_si_bao_W
+				trait = jin_que_hua_W
+				trait = ka_pei_W
+				trait = ke_mu_ning_W
+				trait = liu_li_ke_W
+				trait = huo_heng_si_tao_fen_W
+				trait = jia_luo_lin_W
+				trait = ha_xi_mu_W
+				trait = a_ba_si_W
+				trait = fa_di_ma_W
+			}
+		}
+	}
+	desc = {                 
+		text = EVTDESC_DBI_5_DO_NOT_HAVE
+		trigger = {
+			NOT = { trait = ha_bu_si_bao_P }
+			NOT = { trait = jin_que_hua_P }
+			NOT = { trait = ka_pei_P }
+			NOT = { trait = ke_mu_ning_P }
+			NOT = { trait = liu_li_ke_P }
+			NOT = { trait = huo_heng_si_tao_fen_P }
+			NOT = { trait = jia_luo_lin_P }
+			NOT = { trait = ha_xi_mu_P }
+			NOT = { trait = a_ba_si_P }
+			NOT = { trait = fa_di_ma_P }
+			NOT = { trait = ha_bu_si_bao }
+			NOT = { trait = jin_que_hua }
+			NOT = { trait = ka_pei }
+			NOT = { trait = ke_mu_ning }
+			NOT = { trait = liu_li_ke }
+			NOT = { trait = huo_heng_si_tao_fen }
+			NOT = { trait = jia_luo_lin }
+			NOT = { trait = ha_xi_mu }
+			NOT = { trait = a_ba_si }
+			NOT = { trait = fa_di_ma }
+			NOT = { trait = ha_bu_si_bao_W }
+			NOT = { trait = jin_que_hua_W }
+			NOT = { trait = ka_pei_W }
+			NOT = { trait = ke_mu_ning_W }
+			NOT = { trait = liu_li_ke_W }
+			NOT = { trait = huo_heng_si_tao_fen_W }
+			NOT = { trait = jia_luo_lin_W }
+			NOT = { trait = ha_xi_mu_W }
+			NOT = { trait = a_ba_si_W }
+			NOT = { trait = fa_di_ma_W }		
+		}
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_DBI_5" #筹备仪式
+		hidden_tooltip = {
+			character_event = { id = DBI.6 days = 7 }
+		}
+	}
+	option = {
+		name = "EVTOPTB_DBI_5" #不去
+		
+		hidden_tooltip = {
+			FROMFROM ={
+				character_event = { id = DBI.997 }
+			}
+		}
+	}
+}
+
+############################血脉仪式
+character_event = {
+	id = DBI.6
+	
+	desc = "EVTDESC_DBI_6"  #血脉仪式
+	picture = GFX_evt_quarrel
+	
+	is_triggered_only = yes
+	
+	option ={
+		name = "EVTOPTA_DBI_6"
+		wealth = -50
+		hidden_tooltip = { 
+			FROMFROMFROM = {
+				character_event = { id = DBI.14 }
+				character_event = { id = DBI.24 }
+				character_event = { id = DBI.34 }
+				character_event = { id = DBI.44 }
+				character_event = { id = DBI.54 }
+				character_event = { id = DBI.64 }
+				character_event = { id = DBI.74 }
+				character_event = { id = DBI.84 }
+				character_event = { id = DBI.94 }
+				character_event = { id = DBI.104 }
+				
+				character_event = { id = DBI.7 days = 1 }
+				character_event = { id = DBI.8 days = 2 }
+			}
+		}
+	}
+	option ={
+		name = "EVTOPTB_DBI_6"
+		wealth = -20
+		hidden_tooltip = {
+			FROMFROMFROM = {
+				character_event = { id = DBI.15 }
+				character_event = { id = DBI.25 }
+				character_event = { id = DBI.35 }
+				character_event = { id = DBI.45 }
+				character_event = { id = DBI.55 }
+				character_event = { id = DBI.65 }
+				character_event = { id = DBI.75 }
+				character_event = { id = DBI.85 }
+				character_event = { id = DBI.95 }
+				character_event = { id = DBI.105 }
+				
+				character_event = { id = DBI.7 days = 1 }
+				character_event = { id = DBI.8 days = 2 }
+			}
+		}
+	}
+	option ={
+		name = "EVTOPTC_DBI_6"
+		wealth = -3
+		hidden_tooltip = { FROMFROMFROM = { character_event = { id = DBI.997 } } }
+	}
+}
+
+character_event = {
+	id = DBI.7              #血脉仪式融入外来血脉失败--血脉劣化
+	hide_window =yes
+	
+	is_triggered_only = yes
+	
+	prisoner = no
+	
+	trigger = {
+		has_character_flag = bloodline_inherit_fail
+	}
+
+	immediate ={
+		add_trait = ill
+		random ={ chance = 30 add_trait = Bloodline_Hemolysis }
+	}
+	option = {
+		ai_chance = { factor = 100 }
+		trigger ={
+			has_character_flag = has_ha_bu_si_bao
+			NOT = { trait = ha_bu_si_bao_W }
+		}
+		if = {
+			limit = { trait = ha_bu_si_bao }
+			remove_trait = ha_bu_si_bao
+		}
+		if = {
+			limit = { trait = ha_bu_si_bao_P }
+			remove_trait = ha_bu_si_bao_P
+		}
+		add_trait = ha_bu_si_bao_W
+		set_character_flag = fail_ha_bu_si_bao_inherit
+		random ={ chance = 30 character_event = { id = DBI.7 } }
+	}
+	option = {
+		ai_chance = { factor = 100 }
+		trigger ={
+			has_character_flag = has_jin_que_hua
+			NOT = { trait = jin_que_hua_W }
+		}
+		if = {
+			limit = { trait = jin_que_hua }
+			remove_trait = jin_que_hua
+		}
+		if = {
+			limit = { trait = jin_que_hua_P }
+			remove_trait = jin_que_hua_P
+		}
+		add_trait = jin_que_hua_W
+		set_character_flag = fail_jin_que_hua_inherit
+		random ={ chance = 30 character_event = { id = DBI.7 } }
+	}
+	option = {
+		ai_chance = { factor = 100 }
+		trigger ={
+			has_character_flag = has_ka_pei
+			NOT = { trait = ka_pei_W }
+		}
+		if = {
+			limit = { trait = ka_pei }
+			remove_trait = ka_pei
+		}
+		if = {
+			limit = { trait = ka_pei_P }
+			remove_trait = ka_pei_P
+		}
+		add_trait = ka_pei_W
+		set_character_flag = fail_ka_pei_inherit
+		random ={ chance = 30 character_event = { id = DBI.7 } }
+	}
+	option = {
+		ai_chance = { factor = 100 }
+		trigger ={
+			has_character_flag = has_ke_mu_ning
+			NOT = { trait = ke_mu_ning_W }
+		}
+		if = {
+			limit = { trait = ke_mu_ning }
+			remove_trait = ke_mu_ning
+		}
+		if = {
+			limit = { trait = ke_mu_ning_P }
+			remove_trait = ke_mu_ning_P
+		}
+		add_trait = ke_mu_ning_W
+		set_character_flag = fail_ke_mu_ning_inherit
+		random ={ chance = 30 character_event = { id = DBI.7 } }
+	}
+	option = {
+		ai_chance = { factor = 100 }
+		trigger ={
+			has_character_flag = has_liu_li_ke
+			NOT = { trait = liu_li_ke_W }
+		}
+		if = {
+			limit = { trait = liu_li_ke }
+			remove_trait = liu_li_ke
+		}
+		if = {
+			limit = { trait = liu_li_ke_P }
+			remove_trait = liu_li_ke_P
+		}
+		add_trait = liu_li_ke_W
+		set_character_flag = fail_liu_li_ke_inherit
+		random ={ chance = 30 character_event = { id = DBI.7 } }
+	}
+	option = {
+		ai_chance = { factor = 100 }
+		trigger ={
+			has_character_flag = has_huo_heng_si_tao_fen
+			NOT = { trait = huo_heng_si_tao_fen_W }
+		}
+		if = {
+			limit = { trait = huo_heng_si_tao_fen }
+			remove_trait = huo_heng_si_tao_fen
+		}
+		if = {
+			limit = { trait = huo_heng_si_tao_fen_P }
+			remove_trait = huo_heng_si_tao_fen_P
+		}
+		add_trait = huo_heng_si_tao_fen_W
+		set_character_flag = fail_huo_heng_si_tao_fen_inherit
+		random ={ chance = 30 character_event = { id = DBI.7 } }
+	}
+	option = {
+		ai_chance = { factor = 100 }
+		trigger ={
+			has_character_flag = has_jia_luo_lin
+			NOT = { trait = jia_luo_lin_W }
+		}
+		if = {
+			limit = { trait = jia_luo_lin }
+			remove_trait = jia_luo_lin
+		}
+		if = {
+			limit = { trait = jia_luo_lin_P }
+			remove_trait = jia_luo_lin_P
+		}
+		add_trait = jia_luo_lin_W
+		set_character_flag = fail_jia_luo_lin_inherit
+		random ={ chance = 30 character_event = { id = DBI.7 } }
+	}
+	option = {
+		ai_chance = { factor = 100 }
+		trigger ={
+			has_character_flag = has_ha_xi_mu
+			NOT = { trait = ha_xi_mu_W }
+		}
+		if = {
+			limit = { trait = ha_xi_mu }
+			remove_trait = ha_xi_mu
+		}
+		if = {
+			limit = { trait = ha_xi_mu_P }
+			remove_trait = ha_xi_mu_P
+		}
+		add_trait = ha_xi_mu_W
+		set_character_flag = fail_ha_xi_mu_inherit
+		random ={ chance = 30 character_event = { id = DBI.7 } }
+	}
+	option = {
+		ai_chance = { factor = 100 }
+		trigger ={
+			has_character_flag = has_a_ba_si
+			NOT = { trait = a_ba_si_W }
+		}
+		if = {
+			limit = { trait = a_ba_si }
+			remove_trait = a_ba_si
+		}
+		if = {
+			limit = { trait = a_ba_si_P }
+			remove_trait = a_ba_si_P
+		}
+		add_trait = a_ba_si_W
+		set_character_flag = fail_a_ba_si_inherit
+		random ={ chance = 30 character_event = { id = DBI.7 } }
+	}
+	option = {
+		ai_chance = { factor = 100 }
+		trigger ={
+			has_character_flag = has_fa_di_ma
+			NOT = { trait = fa_di_ma_W }
+		}
+		if = {
+			limit = { trait = fa_di_ma }
+			remove_trait = fa_di_ma
+		}
+		if = {
+			limit = { trait = fa_di_ma_P }
+			remove_trait = fa_di_ma_P
+		}
+		add_trait = fa_di_ma_W
+		set_character_flag = fail_fa_di_ma_inherit
+		random ={ chance = 30 character_event = { id = DBI.7 } }
+	}
+	option = {
+		ai_chance = { factor = 100 }
+		trigger ={
+			OR = {
+				NOT = { has_character_flag = has_ha_bu_si_bao }
+				trait = ha_bu_si_bao_W
+			}
+			OR = {
+				NOT = { has_character_flag = has_jin_que_hua }
+				trait = jin_que_hua_W
+			}
+			OR = {
+				NOT = { has_character_flag = has_ka_pei }
+				trait = ka_pei_W
+			}
+			OR = {
+				NOT = { has_character_flag = has_ke_mu_ning }
+				trait = ke_mu_ning_W
+			}
+			OR = {
+				NOT = { has_character_flag = has_liu_li_ke }
+				trait = liu_li_ke_W
+			}
+			OR = {
+				NOT = { has_character_flag = has_huo_heng_si_tao_fen }
+				trait = huo_heng_si_tao_fen_W
+			}
+			OR = {
+				NOT = { has_character_flag = has_jia_luo_lin }
+				trait = jia_luo_lin_W
+			}
+			OR = {
+				NOT = { has_character_flag = has_ha_xi_mu }
+				trait = ha_xi_mu_W
+			}
+			OR = {
+				NOT = { has_character_flag = has_a_ba_si }
+				trait = a_ba_si_W
+			}
+			OR = {
+				NOT = { has_character_flag = has_fa_di_ma }
+				trait = fa_di_ma_W
+			}
+		}
+		if = {
+			limit = { NOT = { trait = Bloodline_Hemolysis } }
+			add_trait = Bloodline_Hemolysis
+		}
+	}
+}
+
+character_event = {
+	id = DBI.8                  #告诉自己
+	picture = GFX_evt_bad_news_female
+	
+	desc = {
+		text = EVTDESC_DBI_8_lh  #血脉排异反应
+		trigger = {
+			has_character_flag = bloodline_inherit_fail
+		}
+	}
+	desc = {
+		text = EVTDESC_DBI_8  #血脉继承成功
+		trigger = {
+			NOT= { has_character_flag = bloodline_inherit_fail }
+		}
+	}
+	
+	is_triggered_only = yes
+	
+
+	option = {
+		name = EVTOPTA_DBI_8  # 
+		
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_ha_bu_si_bao }
+				trait = ha_bu_si_bao
+			}
+			tooltip = { add_trait = ha_bu_si_bao }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_ha_bu_si_bao }
+				trait = ha_bu_si_bao_P
+			}
+			tooltip = { add_trait = ha_bu_si_bao_P }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_jin_que_hua }
+				trait = jin_que_hua
+			}
+			tooltip = { add_trait = jin_que_hua }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_jin_que_hua }
+				trait = jin_que_hua_P
+			}
+			tooltip = { add_trait = jin_que_hua_P }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_ka_pei }
+				trait = ka_pei
+			}
+			tooltip = { add_trait = ka_pei }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_ka_pei }
+				trait = ka_pei_P
+			}
+			tooltip = { add_trait = ka_pei_P }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_ke_mu_ning }
+				trait = ke_mu_ning
+			}
+			tooltip = { add_trait = ke_mu_ning }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_ke_mu_ning }
+				trait = ke_mu_ning_P
+			}
+			tooltip = { add_trait = ke_mu_ning_P }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_liu_li_ke }
+				trait = liu_li_ke
+			}
+			tooltip = { add_trait = liu_li_ke }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_liu_li_ke }
+				trait = liu_li_ke_P
+			}
+			tooltip = { add_trait = liu_li_ke_P }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_huo_heng_si_tao_fen }
+				trait = huo_heng_si_tao_fen
+			}
+			tooltip = { add_trait = huo_heng_si_tao_fen }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_huo_heng_si_tao_fen }
+				trait = huo_heng_si_tao_fen_P
+			}
+			tooltip = { add_trait = huo_heng_si_tao_fen_P }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_jia_luo_lin }
+				trait = jia_luo_lin
+			}
+			tooltip = { add_trait = jia_luo_lin }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_jia_luo_lin }
+				trait = jia_luo_lin_P
+			}
+			tooltip = { add_trait = jia_luo_lin_P }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_ha_xi_mu }
+				trait = ha_xi_mu
+			}
+			tooltip = { add_trait = ha_xi_mu }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_ha_xi_mu }
+				trait = ha_xi_mu_P
+			}
+			tooltip = { add_trait = ha_xi_mu_P }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_a_ba_si }
+				trait = a_ba_si
+			}
+			tooltip = { add_trait = a_ba_si }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_a_ba_si }
+				trait = a_ba_si_P
+			}
+			tooltip = { add_trait = a_ba_si_P }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_fa_di_ma }
+				trait = fa_di_ma
+			}
+			tooltip = { add_trait = fa_di_ma }
+		}
+		if = {
+			limit = { 
+				NOT = { has_character_flag = has_fa_di_ma }
+				trait = fa_di_ma_P
+			}
+			tooltip = { add_trait = fa_di_ma_P }
+		}
+		
+		if = {
+			limit = { has_character_flag = fail_ha_bu_si_bao_inherit }
+			custom_tooltip = {  text = EVT_fail_ha_bu_si_bao_inherit }
+		}
+		if = {
+			limit = { has_character_flag = fail_jin_que_hua_inherit }
+			custom_tooltip = {  text = EVT_fail_jin_que_hua_inherit }
+		}
+		if = {
+			limit = { has_character_flag = fail_ka_pei_inherit }
+			custom_tooltip = {  text = EVT_fail_ka_pei_inherit }
+		}
+		if = {
+			limit = { has_character_flag = fail_ke_mu_ning_inherit }
+			custom_tooltip = {  text = EVT_fail_ke_mu_ning_inherit }
+		}
+		if = {
+			limit = { has_character_flag = fail_liu_li_ke_inherit }
+			custom_tooltip = {  text = EVT_fail_liu_li_ke_inherit }
+		}
+		if = {
+			limit = { has_character_flag = fail_huo_heng_si_tao_fen_inherit }
+			custom_tooltip = {  text = EVT_fail_huo_heng_si_tao_fen_inherit }
+
+		}
+		if = {
+			limit = { has_character_flag = fail_jia_luo_lin_inherit }
+			custom_tooltip = {  text = EVT_fail_jia_luo_lin_inherit } 
+		}
+		if = {
+			limit = { has_character_flag = fail_ha_xi_mu_inherit }
+			custom_tooltip = {  text = EVT_fail_ha_xi_mu_inherit } 
+		}
+		if = {
+			limit = { has_character_flag = fail_a_ba_si_inherit }
+			custom_tooltip = {  text = EVT_fail_a_ba_si_inherit } 
+		}
+		if = {
+			limit = { has_character_flag = fail_fa_di_ma_inherit }
+			custom_tooltip = {  text = EVT_fail_fa_di_ma_inherit }
+		}
+		if = {
+			limit = { has_character_flag = bloodline_inherit_fail }
+			tooltip = { add_trait = ill }        ###生病
+			any_dynasty_member = {
+				opinion = {
+					modifier = opinion_bloodline_inherit_fail
+					who = ROOT
+					years = 3
+				}
+			}
+		}
+		if = {
+			limit = { NOT = { has_character_flag = bloodline_inherit_fail } }
+			any_dynasty_member = {
+				opinion = {
+					modifier = opinion_bloodline_inherit_success
+					who = ROOT
+					years = 5
+				}
+			}
+		}
+		if = {
+			limit = { trait = Bloodline_Hemolysis }
+			tooltip = { add_trait = Bloodline_Hemolysis } ###冲突血脉
+		}
+		hidden_tooltip = {
+			character_event = { id = DBI.997 } 
+			FROMFROM = {
+				character_event = { id = DBI.9 }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = DBI.9                 #通知父母
+	picture = GFX_evt_bad_news_female
+	
+	desc = {
+		text = EVTDESC_DBI_9_lh  #血脉排异反应
+		trigger = {
+			FROM = { has_character_flag = bloodline_inherit_fail }
+		}
+	}
+	desc = {
+		text = EVTDESC_DBI_9  #血脉继承成功
+		trigger = {
+			FROM = { NOT= { has_character_flag = bloodline_inherit_fail } }
+		}
+	}
+	
+	is_triggered_only = yes
+	
+
+	option = {
+		name = EVTOPTA_DBI_9  # 
+		
+		FROM = {
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_ha_bu_si_bao }
+					trait = ha_bu_si_bao
+				}
+				tooltip = { add_trait = ha_bu_si_bao }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_ha_bu_si_bao }
+					trait = ha_bu_si_bao_P
+				}
+				tooltip = { add_trait = ha_bu_si_bao_P }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_jin_que_hua }
+					trait = jin_que_hua
+				}
+				tooltip = { add_trait = jin_que_hua }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_jin_que_hua }
+					trait = jin_que_hua_P
+				}
+				tooltip = { add_trait = jin_que_hua_P }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_ka_pei }
+					trait = ka_pei
+				}
+				tooltip = { add_trait = ka_pei }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_ka_pei }
+					trait = ka_pei_P
+				}
+				tooltip = { add_trait = ka_pei_P }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_ke_mu_ning }
+					trait = ke_mu_ning
+				}
+				tooltip = { add_trait = ke_mu_ning }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_ke_mu_ning }
+					trait = ke_mu_ning_P
+				}
+				tooltip = { add_trait = ke_mu_ning_P }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_liu_li_ke }
+					trait = liu_li_ke
+				}
+				tooltip = { add_trait = liu_li_ke }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_liu_li_ke }
+					trait = liu_li_ke_P
+				}
+				tooltip = { add_trait = liu_li_ke_P }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_huo_heng_si_tao_fen }
+					trait = huo_heng_si_tao_fen
+				}
+				tooltip = { add_trait = huo_heng_si_tao_fen }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_huo_heng_si_tao_fen }
+					trait = huo_heng_si_tao_fen_P
+				}
+				tooltip = { add_trait = huo_heng_si_tao_fen_P }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_jia_luo_lin }
+					trait = jia_luo_lin
+				}
+				tooltip = { add_trait = jia_luo_lin }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_jia_luo_lin }
+					trait = jia_luo_lin_P
+				}
+				tooltip = { add_trait = jia_luo_lin_P }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_ha_xi_mu }
+					trait = ha_xi_mu
+				}
+				tooltip = { add_trait = ha_xi_mu }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_ha_xi_mu }
+					trait = ha_xi_mu_P
+				}
+				tooltip = { add_trait = ha_xi_mu_P }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_a_ba_si }
+					trait = a_ba_si
+				}
+				tooltip = { add_trait = a_ba_si }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_a_ba_si }
+					trait = a_ba_si_P
+				}
+				tooltip = { add_trait = a_ba_si_P }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_fa_di_ma }
+					trait = fa_di_ma
+				}
+				tooltip = { add_trait = fa_di_ma }
+			}
+			if = {
+				limit = { 
+					NOT = { has_character_flag = has_fa_di_ma }
+					trait = fa_di_ma_P
+				}
+				tooltip = { add_trait = fa_di_ma_P }
+			}
+			
+			if = {
+				limit = { has_character_flag = fail_ha_bu_si_bao_inherit }
+				custom_tooltip = {  text = EVT_fail_ha_bu_si_bao_inherit }
+			}
+			if = {
+				limit = { has_character_flag = fail_jin_que_hua_inherit }
+				custom_tooltip = {  text = EVT_fail_jin_que_hua_inherit }
+			}
+			if = {
+				limit = { has_character_flag = fail_ka_pei_inherit }
+				custom_tooltip = {  text = EVT_fail_ka_pei_inherit }
+			}
+			if = {
+				limit = { has_character_flag = fail_ke_mu_ning_inherit }
+				custom_tooltip = {  text = EVT_fail_ke_mu_ning_inherit }
+			}
+			if = {
+				limit = { has_character_flag = fail_liu_li_ke_inherit }
+				custom_tooltip = {  text = EVT_fail_liu_li_ke_inherit }
+			}
+			if = {
+				limit = { has_character_flag = fail_huo_heng_si_tao_fen_inherit }
+				custom_tooltip = {  text = EVT_fail_huo_heng_si_tao_fen_inherit }
+			}
+			if = {
+				limit = { has_character_flag = fail_jia_luo_lin_inherit }
+				custom_tooltip = {  text = EVT_fail_jia_luo_lin_inherit } 
+			}
+			if = {
+				limit = { has_character_flag = fail_ha_xi_mu_inherit }
+				custom_tooltip = {  text = EVT_fail_ha_xi_mu_inherit } 
+			}
+			if = {
+				limit = { has_character_flag = fail_a_ba_si_inherit }
+				custom_tooltip = {  text = EVT_fail_a_ba_si_inherit } 
+			}
+			if = {
+				limit = { has_character_flag = fail_fa_di_ma_inherit }
+				custom_tooltip = {  text = EVT_fail_fa_di_ma_inherit }
+			}
+			
+			if = {
+				limit = { has_character_flag = bloodline_inherit_fail }
+				tooltip = {  add_trait = ill }       ###生病
+			}
+			if = {
+				limit = { trait = Bloodline_Hemolysis }
+				tooltip = { add_trait = Bloodline_Hemolysis } ###冲突血脉
+			}
+		}
+	}
+}
+
+###################驳杂血脉的断流##########################
+character_event = {
+	id = DBI.997            #驳杂血脉的断流
+	hide_window =yes
+
+	is_triggered_only = yes
+
+	option = {
+		if = {
+			limit ={
+				NOT = { has_character_flag = no_bloodline }
+				NOT = { trait = ha_bu_si_bao_P }
+				NOT = { trait = jin_que_hua_P }
+				NOT = { trait = ka_pei_P }
+				NOT = { trait = ke_mu_ning_P }
+				NOT = { trait = liu_li_ke_P }
+				NOT = { trait = huo_heng_si_tao_fen_P }
+				NOT = { trait = jia_luo_lin_P }
+				NOT = { trait = ha_xi_mu_P }
+				NOT = { trait = a_ba_si_P }
+				NOT = { trait = fa_di_ma_P }
+				NOT = { trait = ha_bu_si_bao }
+				NOT = { trait = jin_que_hua }
+				NOT = { trait = ka_pei }
+				NOT = { trait = ke_mu_ning }
+				NOT = { trait = liu_li_ke }
+				NOT = { trait = huo_heng_si_tao_fen }
+				NOT = { trait = jia_luo_lin }
+				NOT = { trait = ha_xi_mu }
+				NOT = { trait = a_ba_si }
+				NOT = { trait = fa_di_ma }
+				NOT = { trait = ha_bu_si_bao_W }
+				NOT = { trait = jin_que_hua_W }
+				NOT = { trait = ka_pei_W }
+				NOT = { trait = ke_mu_ning_W }
+				NOT = { trait = liu_li_ke_W }
+				NOT = { trait = huo_heng_si_tao_fen_W }
+				NOT = { trait = jia_luo_lin_W }
+				NOT = { trait = ha_xi_mu_W }
+				NOT = { trait = a_ba_si_W }
+				NOT = { trait = fa_di_ma_W }	
+			}
+			set_character_flag = no_bloodline
+		}
+		character_event = { id = DBI.998 days = 3 }
+	}
+}
+
+########################
+character_event = {
+	id = DBI.998
+	desc = "EVTDESC_DBI_998"
+	picture = GFX_evt_recovery
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTA_DBI_998"
+		if = {
+			limit = { trait = ha_bu_si_bao}
+			tooltip = {
+				add_trait = ha_bu_si_bao
+			}
+		}
+		if = {
+			limit = { trait = jin_que_hua}
+			tooltip = {
+				add_trait = jin_que_hua
+			}
+		}
+		if = {
+			limit = { trait = ka_pei}
+			tooltip = {
+				add_trait = ka_pei
+			}
+		}
+		if = {
+			limit = { trait = ke_mu_ning}
+			tooltip = {
+				add_trait = ke_mu_ning
+			}
+		}
+		if = {
+			limit = { trait = liu_li_ke}
+			tooltip = {
+				add_trait = liu_li_ke
+			}
+		}
+		if = {
+			limit = { trait = huo_heng_si_tao_fen}
+			tooltip = {
+				add_trait = huo_heng_si_tao_fen
+			}
+		}
+		if = {
+			limit = { trait = jia_luo_lin}
+			tooltip = {
+				add_trait = jia_luo_lin
+			}
+		}
+		if = {
+			limit = { trait = ha_xi_mu}
+			tooltip = {
+				add_trait = ha_xi_mu
+			}
+		}
+		if = {
+			limit = { trait = a_ba_si}
+			tooltip = {
+				add_trait = a_ba_si
+			}
+		}
+		if = {
+			limit = { trait = fa_di_ma}
+			tooltip = {
+				add_trait = fa_di_ma
+			}
+		}
+		if = {
+			limit = { trait = ha_bu_si_bao_P }
+			tooltip = {
+				add_trait = ha_bu_si_bao_P
+			}
+		}
+		if = {
+			limit = { trait = jin_que_hua_P }
+			tooltip = {
+				add_trait = jin_que_hua_P
+			}
+		}
+		if = {
+			limit = { trait = ka_pei_P }
+			tooltip = {
+				add_trait = ka_pei_P
+			}
+		}
+		if = {
+			limit = { trait = ke_mu_ning_P }
+			tooltip = {
+				add_trait = ke_mu_ning_P
+			}
+		}
+		if = {
+			limit = { trait = liu_li_ke_P }
+			tooltip = {
+				add_trait = liu_li_ke_P
+			}
+		}
+		if = {
+			limit = { trait = huo_heng_si_tao_fen_P }
+			tooltip = {
+				add_trait = huo_heng_si_tao_fen_P
+			}
+		}
+		if = {
+			limit = { trait = jia_luo_lin_P }
+			tooltip = {
+				add_trait = jia_luo_lin_P
+			}
+		}
+		if = {
+			limit = { trait = ha_xi_mu_P }
+			tooltip = {
+				add_trait = ha_xi_mu_P
+			}
+		}
+		if = {
+			limit = { trait = a_ba_si_P }
+			tooltip = {
+				add_trait = a_ba_si_P
+			}
+		}
+		if = {
+			limit = { trait = fa_di_ma_P }
+			tooltip = {
+				add_trait = fa_di_ma_P
+			}
+		}
+		if = {
+			limit = { trait = ha_bu_si_bao_W }
+			tooltip = {
+				add_trait = ha_bu_si_bao_W
+			}
+		}
+		if = {
+			limit = { trait = jin_que_hua_W }
+			tooltip = {
+				add_trait = jin_que_hua_W
+			}
+		}
+		if = {
+			limit = { trait = ka_pei_W }
+			tooltip = {
+				add_trait = ka_pei_W
+			}
+		}
+		if = {
+			limit = { trait = ke_mu_ning_W }
+			tooltip = {
+				add_trait = ke_mu_ning_W
+			}
+		}
+		if = {
+			limit = { trait = liu_li_ke_W }
+			tooltip = {
+				add_trait = liu_li_ke_W
+			}
+		}
+		if = {
+			limit = { trait = huo_heng_si_tao_fen_W }
+			tooltip = {
+				add_trait = huo_heng_si_tao_fen_W
+			}
+		}
+		if = {
+			limit = { trait = jia_luo_lin_W }
+			tooltip = {
+				add_trait = jia_luo_lin_W
+			}
+		}
+		if = {
+			limit = { trait = ha_xi_mu_W }
+			tooltip = {
+				add_trait = ha_xi_mu_W
+			}
+		}
+		if = {
+			limit = { trait = a_ba_si_W }
+			tooltip = {
+				add_trait = a_ba_si_W
+			}
+		}
+		if = {
+			limit = { trait = fa_di_ma_W }
+			tooltip = {
+				add_trait = fa_di_ma_W
+			}
+		}
+		hidden_tooltip = {
+			father = { character_event = { id = DBI.999 } }
+			mother = { character_event = { id = DBI.999 } }
+			random_sibling = {
+				limit = {
+					father = { is_alive = no }
+					mother = { is_alive = no }
+					is_adult = yes
+					is_ruler = yes
+					any_sibling = {
+						NOT = { is_older_than = ROOT }
+					}
+				}
+				character_event = { id = DBI.999 }
+			}
+		}
+		clr_character_flag = has_ha_bu_si_bao
+		clr_character_flag = has_jin_que_hua
+		clr_character_flag = has_ka_pei
+		clr_character_flag = has_ke_mu_ning
+		clr_character_flag = has_liu_li_ke
+		clr_character_flag = has_huo_heng_si_tao_fen
+		clr_character_flag = has_jia_luo_lin
+		clr_character_flag = has_ha_xi_mu
+		clr_character_flag = has_a_ba_si
+		clr_character_flag = has_fa_di_ma
+		clr_character_flag = bloodline_inherit_fail
+		clr_character_flag = fail_ha_bu_si_bao_inherit
+		clr_character_flag = fail_jin_que_hua_inherit
+		clr_character_flag = fail_ka_pei_inherit
+		clr_character_flag = fail_ke_mu_ning_inherit
+		clr_character_flag = fail_liu_li_ke_inherit
+		clr_character_flag = fail_huo_heng_si_tao_fen_inherit
+		clr_character_flag = fail_jia_luo_lin_inherit
+		clr_character_flag = fail_ha_xi_mu_inherit
+		clr_character_flag = fail_a_ba_si_inherit
+		clr_character_flag = fail_fa_di_ma_inherit
+		clr_character_flag = fathers_family
+		clr_character_flag = mothers_family
+		clr_character_flag = mothers_family_realf
+		clr_character_flag = law_fathers_family
+		clr_character_flag = child_with_unkown
+	}
+}
+
+##############通知父母兄
+character_event = {
+	id = DBI.999
+	desc = "EVTDESC_DBI_999"
+	picture = GFX_evt_family
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTA_DBI_999"
+		FROM = {
+			if = {
+				limit = { trait = ha_bu_si_bao}
+				tooltip = {
+					add_trait = ha_bu_si_bao
+				}
+			}
+			if = {
+				limit = { trait = jin_que_hua}
+				tooltip = {
+					add_trait = jin_que_hua
+				}
+			}
+			if = {
+				limit = { trait = ka_pei}
+				tooltip = {
+					add_trait = ka_pei
+				}
+			}
+			if = {
+				limit = { trait = ke_mu_ning}
+				tooltip = {
+					add_trait = ke_mu_ning
+				}
+			}
+			if = {
+				limit = { trait = liu_li_ke}
+				tooltip = {
+					add_trait = liu_li_ke
+				}
+			}
+			if = {
+				limit = { trait = huo_heng_si_tao_fen}
+				tooltip = {
+					add_trait = huo_heng_si_tao_fen
+				}
+			}
+			if = {
+				limit = { trait = jia_luo_lin}
+				tooltip = {
+					add_trait = jia_luo_lin
+				}
+			}
+			if = {
+				limit = { trait = ha_xi_mu}
+				tooltip = {
+					add_trait = ha_xi_mu
+				}
+			}
+			if = {
+				limit = { trait = a_ba_si}
+				tooltip = {
+					add_trait = a_ba_si
+				}
+			}
+			if = {
+				limit = { trait = fa_di_ma}
+				tooltip = {
+					add_trait = fa_di_ma
+				}
+			}
+			if = {
+				limit = { trait = ha_bu_si_bao_P }
+				tooltip = {
+					add_trait = ha_bu_si_bao_P
+				}
+			}
+			if = {
+				limit = { trait = jin_que_hua_P }
+				tooltip = {
+					add_trait = jin_que_hua_P
+				}
+			}
+			if = {
+				limit = { trait = ka_pei_P }
+				tooltip = {
+					add_trait = ka_pei_P
+				}
+			}
+			if = {
+				limit = { trait = ke_mu_ning_P }
+				tooltip = {
+					add_trait = ke_mu_ning_P
+				}
+			}
+			if = {
+				limit = { trait = liu_li_ke_P }
+				tooltip = {
+					add_trait = liu_li_ke_P
+				}
+			}
+			if = {
+				limit = { trait = huo_heng_si_tao_fen_P }
+				tooltip = {
+					add_trait = huo_heng_si_tao_fen_P
+				}
+			}
+			if = {
+				limit = { trait = jia_luo_lin_P }
+				tooltip = {
+					add_trait = jia_luo_lin_P
+				}
+			}
+			if = {
+				limit = { trait = ha_xi_mu_P }
+				tooltip = {
+					add_trait = ha_xi_mu_P
+				}
+			}
+			if = {
+				limit = { trait = a_ba_si_P }
+				tooltip = {
+					add_trait = a_ba_si_P
+				}
+			}
+			if = {
+				limit = { trait = fa_di_ma_P }
+				tooltip = {
+					add_trait = fa_di_ma_P
+				}
+			}
+			if = {
+				limit = { trait = ha_bu_si_bao_W }
+				tooltip = {
+					add_trait = ha_bu_si_bao_W
+				}
+			}
+			if = {
+				limit = { trait = jin_que_hua_W }
+				tooltip = {
+					add_trait = jin_que_hua_W
+				}
+			}
+			if = {
+				limit = { trait = ka_pei_W }
+				tooltip = {
+					add_trait = ka_pei_W
+				}
+			}
+			if = {
+				limit = { trait = ke_mu_ning_W }
+				tooltip = {
+					add_trait = ke_mu_ning_W
+				}
+			}
+			if = {
+				limit = { trait = liu_li_ke_W }
+				tooltip = {
+					add_trait = liu_li_ke_W
+				}
+			}
+			if = {
+				limit = { trait = huo_heng_si_tao_fen_W }
+				tooltip = {
+					add_trait = huo_heng_si_tao_fen_W
+				}
+			}
+			if = {
+				limit = { trait = jia_luo_lin_W }
+				tooltip = {
+					add_trait = jia_luo_lin_W
+				}
+			}
+			if = {
+				limit = { trait = ha_xi_mu_W }
+				tooltip = {
+					add_trait = ha_xi_mu_W
+				}
+			}
+			if = {
+				limit = { trait = a_ba_si_W }
+				tooltip = {
+					add_trait = a_ba_si_W
+				}
+			}
+			if = {
+				limit = { trait = fa_di_ma_W }
+				tooltip = {
+					add_trait = fa_di_ma_W
+				}
+			}
+		}
+	}
+}

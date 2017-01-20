@@ -1,0 +1,2 @@
+###TRAIT ADDING EFFECTS###
+#按字母顺序添加新的Effect
