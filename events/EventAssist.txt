@@ -1,0 +1,258 @@
+###################################
+#
+#          血脉继承事件组
+#		ID =DBI.1000-DBI.1009
+#
+###################################
+
+namespace = DBI
+
+##############################继承血脉事件组###############################
+######继承父亲
+character_event = {
+	id = DBI.1001
+	hide_window =yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		character_event = { id = DBI.10 }
+		character_event = { id = DBI.11 }
+		character_event = { id = DBI.20 }
+		character_event = { id = DBI.21 }
+		character_event = { id = DBI.30 }
+		character_event = { id = DBI.31 }
+		character_event = { id = DBI.40 }
+		character_event = { id = DBI.41 }
+		character_event = { id = DBI.50 }
+		character_event = { id = DBI.51 }
+		character_event = { id = DBI.60 }
+		character_event = { id = DBI.61 }
+		character_event = { id = DBI.70 }
+		character_event = { id = DBI.71 }
+		character_event = { id = DBI.80 }
+		character_event = { id = DBI.81 }
+		character_event = { id = DBI.90 }
+		character_event = { id = DBI.91 }
+		character_event = { id = DBI.100 }
+		character_event = { id = DBI.101 }
+	}
+}
+
+######继承母亲
+character_event = {
+	id = DBI.1002
+	hide_window =yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		character_event = { id = DBI.10 }
+		character_event = { id = DBI.12 }
+		character_event = { id = DBI.20 }
+		character_event = { id = DBI.22 }
+		character_event = { id = DBI.30 }
+		character_event = { id = DBI.32 }
+		character_event = { id = DBI.40 }
+		character_event = { id = DBI.42 }
+		character_event = { id = DBI.50 }
+		character_event = { id = DBI.52 }
+		character_event = { id = DBI.60 }
+		character_event = { id = DBI.62 }
+		character_event = { id = DBI.70 }
+		character_event = { id = DBI.72 }
+		character_event = { id = DBI.80 }
+		character_event = { id = DBI.82 }
+		character_event = { id = DBI.90 }
+		character_event = { id = DBI.92 }
+		character_event = { id = DBI.100 }
+		character_event = { id = DBI.102 }
+	}
+}
+
+
+######继承父方和生父共同拥有的血脉
+character_event = {
+	id = DBI.1003
+	hide_window =yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		character_event = { id = DBI.10 }
+		character_event = { id = DBI.13 }
+		character_event = { id = DBI.20 }
+		character_event = { id = DBI.23 }
+		character_event = { id = DBI.30 }
+		character_event = { id = DBI.33 }
+		character_event = { id = DBI.40 }
+		character_event = { id = DBI.43 }
+		character_event = { id = DBI.50 }
+		character_event = { id = DBI.53 }
+		character_event = { id = DBI.60 }
+		character_event = { id = DBI.63 }
+		character_event = { id = DBI.70 }
+		character_event = { id = DBI.73 }
+		character_event = { id = DBI.80 }
+		character_event = { id = DBI.83 }
+		character_event = { id = DBI.90 }
+		character_event = { id = DBI.93 }
+		character_event = { id = DBI.100 }
+		character_event = { id = DBI.103 }
+	}
+}
+
+####################################################
+#               单性生殖--只有爸爸/妈妈的情况 
+####################################################
+character_event = {
+	id = DBI.1004
+	hide_window =yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		character_event = { id = DBI.16 }
+		character_event = { id = DBI.26 }
+		character_event = { id = DBI.36 }
+		character_event = { id = DBI.46 }
+		character_event = { id = DBI.56 }
+		character_event = { id = DBI.66 }
+		character_event = { id = DBI.76 }
+		character_event = { id = DBI.86 }
+		character_event = { id = DBI.96 }
+		character_event = { id = DBI.106 }
+	}
+}
+
+#####################################################################
+#
+#
+###############################通知事件###############################
+#通知父母兄
+character_event = {
+	id = DBI.1011
+	hide_window =yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		if = {
+			limit = { father = { is_alive = yes } }
+			father = {
+				character_event = { id = DBI.4 days = 2 }
+			}
+		}
+		if = {
+			limit = { father = { is_alive = no } }
+			if = {
+				limit = { mother = { is_alive = yes } }
+				mother = {
+					character_event = { id = DBI.4 days = 2 }
+					}
+			}
+			if = {
+				limit = { mother = { is_alive = no } }
+				random_sibling = {
+					limit = {
+						is_adult = yes
+						is_ruler = yes
+						any_sibling = {
+							NOT = { is_older_than = ROOT }
+						}
+					}
+					character_event = { id = DBI.4 days = 2 }
+				}
+			}
+		}
+		if = {
+			limit = {
+				AND = {
+					father = { is_alive = no }
+					mother = { is_alive = no }
+					any_sibling = {
+						OR = {
+							is_adult = no
+							is_ruler = no
+						}
+					}
+				}
+			}
+			character_event = { id = DBI.997 }
+		}
+	}
+}
+
+#通知母父兄
+character_event = {
+	id = DBI.1012
+	hide_window =yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		if = {
+			limit = { mother = { is_alive = yes } }
+			mother = {
+				character_event = { id = DBI.4 days = 2 }
+			}
+		}
+		if = {
+			limit = { mother = { is_alive = no } }
+			if = {
+				limit = { father = { is_alive = yes } }
+				father = {
+					character_event = { id = DBI.4 days = 2 }
+					}
+			}
+			if = {
+				limit = { father = { is_alive = no } }
+				random_sibling = {
+					limit = {
+						is_adult = yes
+						is_ruler = yes
+						father = {
+							is_father = PREVPREV
+						}
+						any_sibling = {
+							NOT = { is_older_than = ROOT }
+						}
+					}
+					character_event = { id = DBI.4 days = 2 }
+				}
+			}
+		}
+		if = {
+			limit = {
+				AND = {
+					father = { is_alive = no }
+					mother = { is_alive = no }
+					any_sibling = {
+						OR = {
+							is_adult = no
+							is_ruler = no
+						}
+					}
+				}
+			}
+			character_event = { id = DBI.997 }
+		}
+	}
+}
+
+#通知母
+character_event = {
+	id = DBI.1013
+	hide_window =yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		if = {
+			limit = { mother = { is_alive = yes } }
+			mother = {
+				character_event = { id = DBI.4 days = 2 }
+			}
+		}
+	}
+}
