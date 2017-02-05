@@ -1,2 +1,162 @@
 ###TRAIT ADDING EFFECTS###
 #按字母顺序添加新的Effect
+herit_blood_trait_effect = {
+	if = {###继承父亲血脉
+		limit = {
+			belong_paternal_line_trigger = yes
+		}
+		hidden_tooltip = {	
+			character_event = { id = DBI.10 }
+			character_event = { id = DBI.11 }
+			character_event = { id = DBI.20 }
+			character_event = { id = DBI.21 }
+			character_event = { id = DBI.30 }
+			character_event = { id = DBI.31 }
+			character_event = { id = DBI.40 }
+			character_event = { id = DBI.41 }
+			character_event = { id = DBI.50 }
+			character_event = { id = DBI.51 }
+			character_event = { id = DBI.60 }
+			character_event = { id = DBI.61 }
+			character_event = { id = DBI.70 }
+			character_event = { id = DBI.71 }
+			character_event = { id = DBI.80 }
+			character_event = { id = DBI.81 }
+			character_event = { id = DBI.90 }
+			character_event = { id = DBI.91 }
+			character_event = { id = DBI.100 }
+			character_event = { id = DBI.101 }
+		}
+	}
+	if = {###继承母亲血脉
+		limit = {
+			OR = {
+				belong_maternal_line_trigger = yes
+				belong_maternal_line_hasrealfather_trigger = yes
+			}
+		}
+		hidden_tooltip = {
+			character_event = { id = DBI.10 }
+			character_event = { id = DBI.12 }
+			character_event = { id = DBI.20 }
+			character_event = { id = DBI.22 }
+			character_event = { id = DBI.30 }
+			character_event = { id = DBI.32 }
+			character_event = { id = DBI.40 }
+			character_event = { id = DBI.42 }
+			character_event = { id = DBI.50 }
+			character_event = { id = DBI.52 }
+			character_event = { id = DBI.60 }
+			character_event = { id = DBI.62 }
+			character_event = { id = DBI.70 }
+			character_event = { id = DBI.72 }
+			character_event = { id = DBI.80 }
+			character_event = { id = DBI.82 }
+			character_event = { id = DBI.90 }
+			character_event = { id = DBI.92 }
+			character_event = { id = DBI.100 }
+			character_event = { id = DBI.102 }
+		}
+	}
+	if = {###继承父方和生父共同拥有的血脉
+		limit = {
+			belong_law_fathers_trigger = yes
+		}
+		hidden_tooltip = {
+			character_event = { id = DBI.10 }
+			character_event = { id = DBI.12 }
+			character_event = { id = DBI.20 }
+			character_event = { id = DBI.22 }
+			character_event = { id = DBI.30 }
+			character_event = { id = DBI.32 }
+			character_event = { id = DBI.40 }
+			character_event = { id = DBI.42 }
+			character_event = { id = DBI.50 }
+			character_event = { id = DBI.52 }
+			character_event = { id = DBI.60 }
+			character_event = { id = DBI.62 }
+			character_event = { id = DBI.70 }
+			character_event = { id = DBI.72 }
+			character_event = { id = DBI.80 }
+			character_event = { id = DBI.82 }
+			character_event = { id = DBI.90 }
+			character_event = { id = DBI.92 }
+			character_event = { id = DBI.100 }
+			character_event = { id = DBI.102 }
+		}
+	}
+	if = {###和游戏“历史”上没有记载的人生育的孩子（游戏中完全没有这个人物）
+		limit = {
+			is_child_with_unkown_trigger = yes
+		}
+		hidden_tooltip = {
+			character_event = { id = DBI.16 }
+			character_event = { id = DBI.26 }
+			character_event = { id = DBI.36 }
+			character_event = { id = DBI.46 }
+			character_event = { id = DBI.56 }
+			character_event = { id = DBI.66 }
+			character_event = { id = DBI.76 }
+			character_event = { id = DBI.86 }
+			character_event = { id = DBI.96 }
+			character_event = { id = DBI.106 }
+		}
+	}
+}
+###通知父亲
+notify_father_effect = {
+	if = {
+		limit = { father = { is_alive = yes } }
+		father = {
+			character_event = { id = DBI.4 days = 2 }
+		}
+		break = yes
+	}
+}
+###通知母亲
+notify_mother_effect = {
+	if = {
+		limit = { mother = { is_alive = yes } }
+		mother = {
+			character_event = { id = DBI.4 days = 2 }
+		}
+		break = yes
+	}
+}
+###通知长兄
+notify_sibling_effect = {
+	if = {
+		limit = {
+			father = { is_alive = no }
+			mother = { is_alive = no }
+		}
+		random_sibling = {
+			limit = {
+				is_adult = yes
+				is_ruler = yes
+				father = { is_father = PREVPREV }
+				any_sibling = { NOT = { is_older_than = ROOT } }
+			}
+			character_event = { id = DBI.4 days = 2 }
+			break = yes
+		}
+	}
+}
+###没人管直接结束
+no_person_to_notify_effect = {
+	if = {
+		limit = {
+			father = { is_alive = no }
+			mother = { is_alive = no }
+			any_sibling = { 
+				NAND = {
+					is_adult = yes
+					is_ruler = yes
+					father = { is_father = PREVPREV }
+					any_sibling = { NOT = { is_older_than = ROOT } }
+				}
+			}
+		}
+		character_event = { id = DBI.997 }
+	}
+}

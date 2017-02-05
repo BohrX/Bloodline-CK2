@@ -1,0 +1,155 @@
+###################################
+#
+#          血脉继承事件组
+#		ID =DBI.1-DBI.9
+#
+###################################
+
+namespace = DBI
+
+#孩子分类
+character_event = {
+	id = DBI.1
+	hide_window =yes
+
+	trigger = {
+		is_adult = no
+		has_Bloodline_trigger = no
+		OR = {
+			father_even_if_dead = {
+				has_Dynasty_Bloodline_trigger = yes
+			}
+			real_father_even_if_dead = {
+				has_Dynasty_Bloodline_trigger = yes
+			}
+			mother_even_if_dead = {
+				has_Dynasty_Bloodline_trigger = yes
+			}
+		}
+		NOR = {#当此括号内没有条件满足时，此条件通过
+			real_father_even_if_dead = { is_Godborn_trigger = yes }
+			mather_even_if_dead = { is_Godborn_trigger = yes }
+		}
+		NOT = { has_character_flag = no_bloodline }
+	}
+	
+	option = {
+		
+	}
+	
+	option = {
+		AI_chance = { factor = 100 }
+		trigger = {
+			OR = {
+				AND ={
+					NOT = { father_even_if_dead = { always = yes } }
+					NOT = { real_father = { always = yes } }
+					mother_even_if_dead = { always = yes }
+				}
+				AND ={
+					NOT = { mother_even_if_dead = { always = yes } }
+					father_even_if_dead = { always = yes }
+				}
+			}
+		}
+		set_character_flag = child_with_unkown
+		character_event = { id = DBI.3 }
+	}
+	
+	option = {#父（或生父）母都是贵族 的孩子
+		character_event = { id = DBI.2 }
+	}
+}
+
+#孩子继承血脉的断定
+character_event = {
+	id = DBI.2
+	hide_window =yes
+	
+	is_triggered_only = yes
+
+	option = {
+		trigger = {
+			OR = {
+				AND = {   #不是私生子 正常婚姻 
+					was_conceived_a_bastard = NO
+					father = { is_married_matrilineally = NO }
+				}
+				AND = {   #是私生子 父亲是生父 （合法私生子 或 有领地 或 在父亲宫廷）
+					was_conceived_a_bastard = YES
+					is_father_real_father =YES
+					OR = {
+						trait = legit_bastard
+						is_ruler = YES
+						employer = {
+							is_father = ROOT
+						}
+					}
+				}
+			}
+		}
+		set_character_flag = fathers_family
+		character_event = { id = DBI.3 }
+	}
+
+	option = {
+		trigger = {
+			OR = {
+				AND = {   #不是私生子 入赘婚姻
+					was_conceived_a_bastard = NO
+					father = { is_married_matrilineally = YES }
+				}
+				AND = {   #是私生子 父亲是生父  不是（合法私生子 或 有领地 或 在父亲宫廷）
+					was_conceived_a_bastard = YES
+					is_father_real_father =YES
+					is_ruler = NO
+					NOT = { trait = legit_bastard }
+					employer = {
+						NOT = { is_father = ROOT }
+					}
+				}
+			}
+		}
+		set_character_flag = mothers_family
+		character_event = { id = DBI.3 }
+	}
+
+	option = {
+		trigger = {
+			OR = {
+				AND = {   #是私生子 父亲不是生父  存在已知父亲  （法理上的）父亲是入赘婚姻
+					was_conceived_a_bastard = YES
+					is_father_real_father = NO
+					father_even_if_dead = { always = yes }
+					father = { is_married_matrilineally = YES }
+				}
+				AND = {   #是私生子 父亲不是生父  不存在已知父亲
+					was_conceived_a_bastard = YES
+					is_father_real_father = NO
+					NOT = { father_even_if_dead = { always = yes } }
+				}
+			}
+		}
+		set_character_flag = mothers_family_realf
+		character_event = { id = DBI.3 }
+	}
+
+	option = {
+	#是私生子 父亲不是生父  存在父亲 （法理上的）父亲是正常婚姻
+		trigger = {
+			was_conceived_a_bastard = YES
+			is_father_real_father = NO
+			father_even_if_dead = { always = yes }
+			father = { is_married_matrilineally = NO }
+		}
+		set_character_flag = law_fathers_family
+		character_event = { id = DBI.3 }
+	}
+
+	option = {
+		trigger = {
+			has_character_flag = child_with_unkown
+		}
+		character_event = { id = DBI.3 }
+	}
+}

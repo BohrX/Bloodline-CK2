@@ -120,6 +120,7 @@ narrative_event = {
 			break = yes
 		}
 		
+		#如果属于伟大家族  开局继承血脉
 		if = {
 			limit = {
 				OR = {

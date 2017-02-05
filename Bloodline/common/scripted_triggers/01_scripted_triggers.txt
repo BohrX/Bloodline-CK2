@@ -1,7 +1,8 @@
 ####BLOODLINE  TRAIT  TRIGGERS####
 #如果你做了改变，请在下表中修改条目描述
 
-#dynasty bloodline
+##############################
+###dynasty bloodline
 #is_Habsburg_trigger		拥有哈布斯堡血脉（纯正、普通或驳杂 下同）
 #is_Plantagenet_trigger		拥有金雀花血脉
 #is_Capet_trigger			拥有卡佩血脉
@@ -15,9 +16,20 @@
 
 #is_Godborn_trigger			拥有神之血脉
 
+#has_Dynasty_Bloodline_trigger	 拥有伟大家族的血脉
+#has_Bloodline_trigger		拥有特殊血脉
 
-##DYNASTY BLOODLINE###
+#############################
+###child  type
+#is_child_with_unkown_trigger				和游戏“历史”上没有记载的人生育的孩子（游戏中完全没有这个人物）
+#belong_paternal_line_trigger				属于父系家族的子嗣
+#belong_maternal_line_trigger				属于母系家族的子嗣
+#belong_law_fathers_trigger				属于法律上父亲家族的子嗣（父亲并非生父）
+#belong_maternal_line_hasrealfather_trigger	属于母系家族的父亲并非生父的子嗣
 
+
+############################################################################
+##DYNASTY BLOODLINE##
 ##哈布斯堡
 is_Habsburg_trigger = {
 	OR = {
@@ -115,5 +127,112 @@ is_Godborn_trigger = {
 		trait = god_man
 		trait = god_man_2
 		trait = god_man_3
+	}
+}
+
+#############血脉判断
+##拥有伟大家族血脉
+has_Dynasty_Bloodline_trigger = {
+	OR={
+		is_Habsburg_trigger = yes
+		is_Plantagenet_trigger = yes
+		is_Capet_trigger = yes
+		is_Komneni_trigger = yes
+		is_Ryurik_trigger = yes
+		is_Hohenstaufen_trigger = yes
+		is_Caroling_trigger = yes
+		is_Hashim_trigger = yes
+		is_Abbas_trigger = yes
+		is_Fatimah_trigger = yes
+	}
+}
+##拥有特殊血脉
+has_Bloodline_trigger = {
+	OR={
+		has_Dynasty_Bloodline_trigger = yes
+		is_Godborn_trigger = yes
+	}
+}
+############################################################################
+
+
+##CHILD TYPE##
+###和游戏“历史”上没有记载的人生育的孩子（游戏中完全没有这个人物）
+is_child_with_unkown_trigger = {
+	OR = {
+		AND ={
+			NOT = { father_even_if_dead = { always = yes } }
+			NOT = { real_father = { always = yes } }
+			mother_even_if_dead = { always = yes }
+		}
+		AND ={
+			NOT = { mother_even_if_dead = { always = yes } }
+			father_even_if_dead = { always = yes }
+		}
+	}
+}
+
+###属于父系家族
+belong_paternal_line_trigger = {
+	OR = {
+		AND = {   #不是私生子 正常婚姻 
+			was_conceived_a_bastard = NO
+			father = { is_married_matrilineally = NO }
+		}
+		AND = {   #是私生子 父亲是生父 （合法私生子 或 有领地 或 在父亲宫廷）
+			was_conceived_a_bastard = YES
+			is_father_real_father =YES
+			OR = {
+				trait = legit_bastard
+				is_ruler = YES
+				employer = {
+					is_father = ROOT
+				}
+			}
+		}
+	}
+}
+
+##属于母系家族
+belong_maternal_line_trigger = {
+	OR = {
+		AND = {   #不是私生子 入赘婚姻
+			was_conceived_a_bastard = NO
+			father = { is_married_matrilineally = YES }
+		}
+		AND = {   #是私生子 父亲是生父  不是（合法私生子 或 有领地 或 在父亲宫廷）
+			was_conceived_a_bastard = YES
+			is_father_real_father =YES
+			is_ruler = NO
+			NOT = { trait = legit_bastard }
+			employer = {
+				NOT = { is_father = ROOT }
+			}
+		}
+	}
+}
+
+##属于法律上父亲家族（父亲并非生父）
+belong_law_fathers_trigger = {
+	was_conceived_a_bastard = YES
+	is_father_real_father = NO
+	father_even_if_dead = { always = yes }
+	father = { is_married_matrilineally = NO }
+}
+
+##属于母系家族（母亲非婚所生）
+belong_maternal_line_hasrealfather_trigger = {
+	OR = {
+		AND = {   #是私生子 父亲不是生父  存在已知父亲  （法理上的）父亲是入赘婚姻
+			was_conceived_a_bastard = YES
+			is_father_real_father = NO
+			father_even_if_dead = { always = yes }
+			father = { is_married_matrilineally = YES }
+		}
+		AND = {   #是私生子 父亲不是生父  不存在已知父亲
+			was_conceived_a_bastard = YES
+			is_father_real_father = NO
+			NOT = { father_even_if_dead = { always = yes } }
+		}
 	}
 }
