@@ -6,13 +6,13 @@
 #is_Habsburg_trigger		拥有哈布斯堡血脉（纯正、普通或驳杂 下同）
 #is_Plantagenet_trigger		拥有金雀花血脉
 #is_Capet_trigger			拥有卡佩血脉
-#is_Komneni_trigger			拥有科穆宁血脉
-#is_Ryurik_trigger			拥有留里克血脉
+#is_Komnene_trigger			拥有科穆宁血脉
+#is_Rurikid_trigger			拥有留里克血脉
 #is_Hohenstaufen_trigger		拥有霍亨斯陶芬血脉
-#is_Caroling_trigger			拥有加洛林血脉
-#is_Hashim_trigger			拥有哈希姆血脉
-#is_Abbas_trigger			拥有阿巴斯血脉
-#is_Fatimah_trigger			拥有法蒂玛血脉
+#is_Karoling_trigger			拥有加洛林血脉
+#is_Hashimid_trigger			拥有哈希姆血脉
+#is_Abbasid_trigger			拥有阿巴斯血脉
+#is_Fatimid_trigger			拥有法蒂玛血脉
 
 #is_Godborn_trigger			拥有神之血脉
 
@@ -120,6 +120,54 @@ is_Fatimid_trigger = {
 	}
 }
 
+#############血脉判断
+##拥有伟大家族驳杂血脉
+has_weak_Dynasty_Bloodline_trigger = {
+	OR = {
+		trait = ha_bu_si_bao_W
+		trait = jin_que_hua_W
+		trait = ka_pei_W
+		trait = ke_mu_ning_W
+		trait = liu_li_ke_W
+		trait = huo_heng_si_tao_fen_W
+		trait = jia_luo_lin_W
+		trait = ha_xi_mu_W
+		trait = a_ba_si_W
+		trait = fa_di_ma_W
+	}
+}
+##拥有伟大家族纯正血脉
+has_pure_Dynasty_Bloodline_trigger = {
+	OR = {
+		trait = ha_bu_si_bao_P
+		trait = jin_que_hua_P
+		trait = ka_pei_P
+		trait = ke_mu_ning_P
+		trait = liu_li_ke_P
+		trait = huo_heng_si_tao_fen_P
+		trait = jia_luo_lin_P
+		trait = ha_xi_mu_P
+		trait = a_ba_si_P
+		trait = fa_di_ma_P
+	}
+}
+
+##拥有伟大家族血脉
+has_Dynasty_Bloodline_trigger = {
+	OR={
+		is_Habsburg_trigger = yes
+		is_Plantagenet_trigger = yes
+		is_Capet_trigger = yes
+		is_Komnene_trigger = yes
+		is_Rurikid_trigger = yes
+		is_Hohenstaufen_trigger = yes
+		is_Karoling_trigger = yes
+		is_Hashimid_trigger = yes
+		is_Abbasid_trigger = yes
+		is_Fatimid_trigger = yes
+	}
+}
+
 #####################
 ##神裔
 is_Godborn_trigger = {
@@ -130,22 +178,6 @@ is_Godborn_trigger = {
 	}
 }
 
-#############血脉判断
-##拥有伟大家族血脉
-has_Dynasty_Bloodline_trigger = {
-	OR={
-		is_Habsburg_trigger = yes
-		is_Plantagenet_trigger = yes
-		is_Capet_trigger = yes
-		is_Komneni_trigger = yes
-		is_Ryurik_trigger = yes
-		is_Hohenstaufen_trigger = yes
-		is_Caroling_trigger = yes
-		is_Hashim_trigger = yes
-		is_Abbas_trigger = yes
-		is_Fatimah_trigger = yes
-	}
-}
 ##拥有特殊血脉
 has_Bloodline_trigger = {
 	OR={
